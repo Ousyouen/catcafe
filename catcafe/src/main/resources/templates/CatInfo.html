@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猫カフェ - 猫たち</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fef8e6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ffebcd;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: #444;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        .cat-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .cat-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 15px;
+            text-align: center;
+        }
+        .cat-card img {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .cat-card h3 {
+            margin: 10px 0;
+            color: #444;
+        }
+        .cat-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>猫たち</h1>
+    </header>
+    <div class="container">
+        <div class="cat-list">
+            <div class="cat-card">
+                <img src="https://via.placeholder.com/200x150" alt="猫の写真">
+                <h3>ミャオ</h3>
+                <p>性格: おとなしい</p>
+                <p>年齢: 2歳</p>
+            </div>
+            <div class="cat-card">
+                <img src="https://via.placeholder.com/200x150" alt="猫の写真">
+                <h3>タマ</h3>
+                <p>性格: 活発</p>
+                <p>年齢: 3歳</p>
+            </div>
+            <div class="cat-card">
+                <img src="https://via.placeholder.com/200x150" alt="猫の写真">
+                <h3>ココ</h3>
+                <p>性格: 甘えん坊</p>
+                <p>年齢: 4歳</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
