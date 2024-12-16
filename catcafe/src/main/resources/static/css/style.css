@@ -2327,9 +2327,8 @@ padding:1em; }
 	  font-size: 0.85em;
 	  margin: 0em auto;
 	  width: 100%;
-	  overflow: overlay:hidden:;
-	  overflow: hidden;
-	  height: 52px;
+	  overflow:hidden;
+	  height:52px;
 	}
 	.c-family {
   background: url("../images/f-cats.jpg") no-repeat 0px 0px;

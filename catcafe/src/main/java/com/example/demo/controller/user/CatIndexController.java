@@ -13,5 +13,9 @@ public class CatIndexController {
 	public String index() {
 		return "index";
 	}
+	@GetMapping("/shouye/information")
+	public String information() {
+		return "portfolio";
+	}
 
 }
