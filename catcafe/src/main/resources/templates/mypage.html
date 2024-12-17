@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>猫咖 ユーザーページ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery.min.js"></script>
+</head>
+<body>
+    <!-- Navigation Script -->
+    <script>
+        $(document).ready(function() {
+            $("span.menu").on("click", function() {
+                $(".top-menu").slideToggle("slow");
+            });
+        });
+    </script>
+    <script src="/js/jquery.swipebox.min.js" defer></script>
+
+    <!-- Header Section -->
+    <div id="home" class="header">
+        <div class="header-bottom">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Gat<span>o</span></h1>
+                    </a>
+                </div>
+                <span class="menu"></span>
+                <div class="top-menu"> 
+                    <ul>
+                        <nav>
+                            <li><a href="index.html">Home</a></li> 
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="services.html">Services</a></li> 
+                            <li><a href="cats.html">猫たち</a></li>
+                            <li><a class="active" href="user.html">マイページ</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </nav>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner Section -->
+    <div class="banner two">
+        <div class="container">    
+            <div class="pag-nav">
+                <ul class="p-list">
+                    <li><a href="index.html">Home</a></li> &nbsp;&nbsp;/&nbsp;
+                    <li class="act">&nbsp;マイページ</li>
+                </ul>
+            </div>
+        </div>   
+    </div>
+
+    <!-- User Profile Section -->
+    <div class="user-profile">
+        <div class="container">
+            <h3 class="text-center mb-4">ユーザープロフィール</h3>
+            <div class="profile-details">
+                <form action="/update_profile" method="post" enctype="multipart/form-data">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 text-center">
+                            <label for="avatarUpload">
+                                <img src="/images/user_avatar.jpg" alt="User Avatar" class="img-responsive img-circle" style="max-width: 150px; margin: auto; cursor: pointer;" id="avatarPreview" />
+                            </label>
+                            <p class="mt-2" style="font-size: 0.9em; color: #666;">アイコンをクリックして更新</p>
+                            <input type="file" name="avatar" id="avatarUpload" accept="image/*" style="display: none;">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="username">ユーザー名:</label>
+                                <input type="text" name="username" id="username" class="form-control" value="田中 猫子">
+                            </div>
+                            <div class="form-group">
+                                <label for="birthday">生年月日:</label>
+                                <input type="date" name="birthday" id="birthday" class="form-control" value="1990-01-01">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">メールアドレス:</label>
+                                <input type="email" name="email" id="email" class="form-control" value="neko.tanaka@example.com">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery services py-5">
+        <div class="container">
+            <h3 class="text-center mb-4">お気に入りの猫たち</h3>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <a href="/images/g1.jpg" class="swipebox">
+                        <img src="/images/g1.jpg" class="img-responsive zoom-img" style="border-radius: 10px;"/>
+                    </a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <a href="/images/g2.jpg" class="swipebox">
+                        <img src="/images/g2.jpg" class="img-responsive zoom-img" style="border-radius: 10px;"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reservation Section -->
+    <div class="reservation py-5">
+        <div class="container">
+            <h3 class="text-center mb-4">予約履歴</h3>
+            <table class="table table-bordered text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th>日付</th>
+                        <th>時間</th>
+                        <th>予約ステータス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024/07/10</td>
+                        <td>14:00 - 16:00</td>
+                        <td>確定</td>
+                    </tr>
+                    <tr>
+                        <td>2024/07/15</td>
+                        <td>12:00 - 14:00</td>
+                        <td>キャンセル</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="c-family">
+        <div class="container">
+            <div class="family-top">
+                <h3>家族の一員としての猫 !!</h3>
+                <p>私たちの猫の大家族は、愛らしい猫たちがたくさん集まった楽しい場所です。各々の猫は独自の性格を持ち、時にはお互いにいたずらをしたり、静かに寄り添ったりしています。猫たちの多様性が魅力で、どの猫も家族の一員として大切にされています。この家族の一員として、毎日が新しい発見と喜びに満ちています。猫たちと一緒に過ごす時間は、心温まるひとときです。</p>
+                <a class="read two" href="#">もっと見る</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer text-center py-4">
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-md-6 footer-text">  
+                    <h3>About Us</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+                    <a class="read" href="single.html">Read More</a>
+                </div>
+                <div class="col-md-6 footer-info">
+                    <h3>Get In Touch</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <div class="support">
+                        <input type="text" class="text" value="Enter email..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter email...';}">
+                        <input type="submit" value="SUBSCRIBE" class="botton">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="copy">
+            <p>&copy; 2015 All Rights Reserved. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a> </p>
+        </div>
+    </div>
+    <!-- Script for Avatar Preview -->
+    <script>
+        document.getElementById("avatarUpload").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById("avatarPreview").src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+    <!-- Swipebox Script -->
+    <script src="/js/jquery.swipebox.min.js" defer></script> 
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            if (window.jQuery) {
+                $(".swipebox").swipebox();
+            } else {
+                console.error("jQuery is not loaded.");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.example.demo.controller.admin;
+	package com.example.demo.controller.admin;
 /**
  * 猫情報管理者ページ
  * @author Qiu
