@@ -5783,3 +5783,23 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+/* 猫情報 */
+.cat-info {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f4f4f4; /* 背景色可以根据需要调整 */
+    border-top: 1px solid #ddd; /* 给图片和文本之间添加分隔线 */
+}
+
+.cat-info h5 {
+    font-size: 16px;
+    margin: 0;
+    color: #333;
+}
+
+.cat-info p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #666;
+}
+
