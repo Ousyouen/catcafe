@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MypageController {
 	
 	@GetMapping("mypage")
-	public String Notfind() {
-		return "mypage";
+	public String MyPage() {
+		return "mypage";	
 	}
 }
+ 
