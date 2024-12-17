@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>猫情報管理ページ</title>
     <link rel="stylesheet" href="css/management-style.css"> <!-- 引入外部CSS -->
 </head>
@@ -43,9 +43,9 @@
                 <label for="catAge">年齢:</label>
                 <input type="number" id="catAge">
                 <br>
-
-                <label for="catImage">画像のURL:</label>
-                <input type="text" id="catImage">
+                <label for="catImage">画像を選んでください:</label>
+                <input type="file" id="catImage" accept="image/*">
+                <br>
                 <br>
 
                 <button type="submit">変更する</button>
@@ -66,8 +66,8 @@
                 <input type="number" id="newCatAge" required>
                 <br>
 
-                <label for="newCatImage">画像のURL:</label>
-                <input type="text" id="newCatImage" required>
+                <label for="newCatImage">画像を選んでください:</label>
+                <input type="file" id="newCatImage" accept="image/*">
                 <br>
 
                 <button type="submit">追加する</button>
