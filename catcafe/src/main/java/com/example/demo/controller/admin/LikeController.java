@@ -7,14 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LikeController {
 
-    private int likeCount = 0;  // 初始化点赞数
-
     // 处理点赞请求
     @PostMapping("/like")
     public LikeResponse like(@RequestParam int likeCount) {
-        // 更新点赞数
-        this.likeCount = likeCount;
-        
         // 返回新的点赞数
         return new LikeResponse(likeCount);
     }
