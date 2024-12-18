@@ -14,4 +14,9 @@ public class CatsController {
 	public String catManagement() {
 		return "catinfomanagement";
 	}
+	@GetMapping("/header")
+	public String header() {
+		return "header";
+	}	
+	
 }

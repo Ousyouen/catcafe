@@ -12,7 +12,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="css/style.css" rel='stylesheet' type='text/css' />	
 <script src="js/jquery.min.js"> </script>
 <!--webfonts-->
- <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700|Cinzel+Decorative:400,700' rel='stylesheet' type='text/css'>
+ <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700|Cinzel+Decorative:400,700' rel='stylesheet' type='text/css'>  
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <!--//webfonts-->
 </head>
 <body>
@@ -21,13 +22,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="header-bottom">
 			<div class="container">
 				<div class="logo">
-					<a href="index.html"><h1>Gat<span>o</span></h1></a>
+					<a href="index.html"><h1>猫カフェ<span>レイ</span></h1></a>
 				</div>
 				<span class="menu"></span>
 				<div class="top-menu">
 					<ul>
 					<nav>
-						<li><a class="active" href="index.html">Home</a></li> 
+						<li><a class="active" href="index.html">ホームページ</a></li> 
 						<li><a href="about.html">About</a></li>
 						<li><a href="404.html">SERVICES</a></li> 
 						<li><a href="portfolio.html">PORTFOLIO</a></li> 
@@ -179,19 +180,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="about">
 		<div class="container">
 				<div class="about-head">
-				   <h3>About</h3>
-				   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				   <h3>当店は？</h3>
+				   <p>ようこそ、当店の猫カフェへ！ここは、温かく落ち着いた雰囲気の場所で、美味しいコーヒーを楽しみながら、かわいい猫たちと親しく触れ合い、彼らがもたらす温もりと静けさを感じることができます。どの猫も私たちの家族の一員で、柔らかな毛と優しい目で、リラックスした時間を過ごすお手伝いをしてくれます。疲れた日や、ゆったりとした午後を過ごしたい時に、ぜひお越しください。</p>
 			  	</div>	
 				<div class="cat-info-section">
 					<div class="cat-info-left">
 						<img src="images/cat.jpg" alt="" />
 					</div>
 					<div class="cat-info-middle">
-						<h4>cat Info</h4>
+						<h4>猫たちの紹介</h4>
 					</div>
-					<div class="cat-info-right">
-						<h3>Lorem Ipsum Simply</h3>
-						<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent </p>
+						<div class="cat-info-right">
+    						<h3>猫たち</h3>
+   						 <p>ここにいる猫たちはみんな個性豊かで、愛らしい魅力を持っています！遊ぶのが大好きな子も、お昼寝が得意な子も、あなたと素敵な時間を過ごす準備ができています。ふわふわの毛並みと、キラキラした瞳であなたを迎えてくれるでしょう。猫たちとの時間は、きっと癒しと笑顔でいっぱいになるはずです！</p>
+</div>
+
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -202,8 +205,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="gallery">
 		<div class="container">
 				<div class="gallery-head">
-				   <h3>Adoption For Cats</h3>
-				   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				  <h3>猫の里親募集</h3>
+					<p>当店では、可愛い猫たちの里親を募集しています！猫たちはそれぞれに個性があり、どの子も愛情をいっぱいに注いでくれること間違いなしです。新しい家族を迎える準備ができている猫たちと、素敵な日々を過ごしてみませんか？あなたの優しさと温かい手で、猫たちに新しい家を提供してあげてください。</p>
 			  	</div>	
 			<div class="portfolio-bottom">
 				<div class="gallery-one">
@@ -235,7 +238,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--swipebox -->	
 			<link rel="stylesheet" href="css/swipebox.css">
 				<script src="js/jquery.swipebox.min.js"></script> 
+				<script src="js/index.js"></script>
 				<script type="text/javascript">
+			
 					jQuery(function($) {
 						$(".swipebox").swipebox();
 					});
@@ -247,8 +252,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--/blog-->
 		<div id="blog" class="blog">	
 				<div class="blog-head">
-				   <h3>Blog</h3>
-				   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				   <h3>ブログ</h3>
+					<p>こんにちは！ここでは猫たちの日常や、当店での楽しい出来事をシェアしています。猫たちの可愛さや、店内での癒しの瞬間をお届けしますので、ぜひチェックしてみてください！私たちのブログを通じて、猫たちの新しい冒険や、ちょっとしたヒントもご紹介しています。あなたも一緒に、猫たちの楽しい世界を覗いてみませんか？</p>
 			  	</div>			
 			<div class="blog-grids">	
 				<div class="col-md-5 blog-grid-info">
@@ -256,10 +261,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-3 blog-grid-info">
 					<div class="blog-grid-text">
-						<a href="single.html"><h3>Lorem Ipsum is simply</h3></a>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-						<a class="read" href="single.html">Read More</a>
+						<a href="single.html"><h3>ミケ </h3></a>
+						<p>ミケは、活発で好奇心旺盛な猫です。どんな新しいおもちゃにもすぐに興味を持ち、楽しそうに遊ぶ姿がとても可愛いです。ふわふわの毛並みと、きらきらした目が特徴的です。</p>
+						<button class="like-button" id="likeButton">
+ 						   <i class="fas fa-thumbs-up"></i> 
+						</button>
+						<span id="likeCount">0</span>  
+						<a class="read" href="single.html">猫の詳しい情報</a>			
 					</div>
 				</div>	
 				<div class="col-md-4 blog-grid-info">
@@ -270,10 +278,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="blog-grids">	
 				<div class="col-md-5 blog-grid-info">
 					<div class="blog-grid-text blg-text-two">
-						<a href="single.html"><h3>Lorem Ipsum is simply</h3></a>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-						<a class="read" href="single.html">Read More</a>
+						<a href="single.html"><h3>タマ </h3></a>
+						<p>タマは、優しくておっとりした性格の猫です。お昼寝が大好きで、ソファで丸くなって寝ている姿がとても愛らしいです。タマのまんまるな顔と小さな耳が癒しのポイントです。</p>
+						<button class="like-button" id="likeButton">
+ 						   <i class="fas fa-thumbs-up"></i> 
+						</button>
+						<span id="likeCount">0</span>  
+						<a class="read" href="single.html">猫の詳しい情報</a>	
 					</div>
 				</div>
 				<div class="col-md-3 blog-grid-info">
@@ -281,10 +292,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-4 blog-grid-info">
 					<div class="blog-grid-text blg-text-three">
-						<a href="single.html"><h3>Lorem Ipsum is simply</h3></a>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-						<a class="read" href="single.html">Read More</a>
+						<a href="single.html"><h3>ルナ </h3></a>
+							<p>ルナは、自由気ままに過ごす猫で、特に高い場所が好きです。窓辺で外を眺める姿や、足音を忍ばせながら歩く姿がとてもキュートです。彼女の独特な鳴き声が、また可愛さを引き立てます。</p>
+						<button class="like-button" id="likeButton">
+ 						   <i class="fas fa-thumbs-up"></i> 
+						</button>
+						<span id="likeCount">0</span>  
+						<a class="read" href="single.html">猫の詳しい情報</a>	
 					</div>
 				</div>
 				<div class="clearfix"> </div>
@@ -295,8 +309,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="c-family">
 		<div class="container">
 		       <div class="family-top">
-			    <h3>Cat Family !!</h3>
-				   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				   <h3>猫の家族</h3>
+					<p>私たちの猫たちは、個性豊かで、どの猫も愛らしい特徴を持っています。それぞれがユニークな魅力を持っており、訪れるお客様に癒しと楽しさを提供しています。どんな時でも猫たちのかわいい仕草に心癒されること間違いなしです！</p>
 				   <a class="read two" href="#">Read More</a>
 			   </div>
 		</div>
@@ -306,14 +320,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="container">
 					<div class="footer-grids">
 						<div class="col-md-6 footer-text">  
-							<h3>About Us</h3>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+							<h3>私たちについて</h3>
+							<p>当店は、猫と人々が楽しく過ごせる場所として、猫たちとの触れ合いを大切にしています。毎日が楽しく、猫たちの優しい目線や、ふわふわの毛を触ることで、心が穏やかになります。私たちの猫たちと一緒に過ごしながら、リラックスしたひとときをお楽しみください。</p>
+							<p>当店では、猫たちに優しく接することを大切にしており、訪れるお客様にもその温かさを感じていただけるように心掛けています。猫たちは私たちの大切な家族の一員であり、皆さまにもその素晴らしい時間をお届けできることを嬉しく思っています。</p>
 							<a class="read" href="single.html">Read More</a>
 						</div>
 						<div class="col-md-6 footer-info">
-							<h3>Get In Touch</h3>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since, </p>
+							<h3>お問い合わせ</h3>
+							<p>ご質問やご予約、猫たちの情報についてのお問い合わせは、どうぞお気軽にご連絡ください。私たちはお客様の訪問を心よりお待ちしております。</p>
 							<div class="support">
 							   <input type="text" class="text" value="Enter email..." onfocus="this.value = '';" onblur="if (this.value == 'Enter email...') {this.value = 'Enter email...';}">
 							   <input type="submit" value="SUBSCRIBE" class="botton">
@@ -324,7 +338,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 			<div class="copy">
-		              <p>&copy; 2015 All Rights Reserved. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a> </p>
+		              <p>&copy; 2024 All Rights Reserved. </a> </p>
 		            </div>
 			<!--start-smoth-scrolling-->
 			<script type="text/javascript">

@@ -1,0 +1,25 @@
+style
+   
+    .like-button {
+        font-size: 30px; 
+        background-color: transparent;
+        border: none;
+        color: #4CAF50; 
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;  
+    }
+
+    .like-button:hover {
+        color: #45a049; 
+    }
+
+    .like-button:active {
+        transform: scale(1.2);  
+    }
+
+    #likeCount {
+        font-size: 20px;
+        color: #333;
+        margin-left: 10px;
+    }
+
