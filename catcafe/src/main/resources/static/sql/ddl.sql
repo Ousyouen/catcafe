@@ -33,5 +33,6 @@ CREATE TABLE about_info (
     team_title VARCHAR(255),           -- 团队标题
     team_members TEXT,                 -- JSON 格式存储团队成员信息
     cat_family_description TEXT,       -- 猫家庭描述
+    delete_flag TINYINT DEFAULT 0,
     update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

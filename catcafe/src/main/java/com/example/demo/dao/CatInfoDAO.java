@@ -32,7 +32,7 @@ public interface CatInfoDAO {
 	@Update("UPDATE cat_info SET delete_flag = 1 WHERE id = #{id}")
 	int deleteCatInfo(Long id);
 	
-	// IDで猫の情報を調べる（削除されていない猫のみ）
+	// おすすめの猫を取得（削除されていない猫のみ）
 	@Select("SELECT * FROM cat_info WHERE osusume_flg = #{osusumeFlg} AND delete_flag = #{deleteFlag}")
 	List<CatInfoMst> findByOsusumeFlgAndDeleteFlag(int osusumeFlg,int deleteFlag);
 
