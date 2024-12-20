@@ -25,11 +25,10 @@ public class IndexInfoService {
     // 根据店铺ID获取店铺信息和猫信息的DTO
     public IndexInfoDTO getStoreInfo() {
         // 从DAO获取店铺信息
-        Optional<StoreInfoMst> storeInfoOptional = storeInfoDAO.findByDeleteFlag(0);
-        if (!storeInfoOptional.isPresent()) {
-            throw new RuntimeException("Store not found or already deleted");
+    	StoreInfoMst storeInfo = storeInfoDAO.findByDeleteFlag(0);
+        if (storeInfo==null) {
+        	throw new RuntimeException("Store not found or already deleted");
         }
-        StoreInfoMst storeInfo = storeInfoOptional.get();
 
         // 构建DTO对象
         IndexInfoDTO indexInfoDTO = new IndexInfoDTO();

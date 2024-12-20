@@ -1,36 +1,23 @@
 package com.example.demo.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-
-
-@Entity
 public class StoreInfoMst extends BaseModel {
 
 
-    @Column(name = "carousel1")
     private String carousel1; // 画面カルーセル1，可以是图片的URL或相关文本
 
-    @Column(name = "carousel2")
     private String carousel2; // 画面カルーセル2
 
-    @Column(name = "carousel3")
     private String carousel3; // 画面カルーセル3
 
-    @Column(name = "store_intro", columnDefinition = "TEXT")
     private String storeIntro; // 店舗紹介，店铺介绍，可以是长文本
 
-    @Column(name = "cats_intro", columnDefinition = "TEXT")
     private String catsIntro; // 猫たちの紹介，猫的介绍
 
-    @Column(name = "cats_adoption", columnDefinition = "TEXT")
     private String catsAdoption; // 猫の里親募集，猫的领养请求
 
-    @Column(name = "cats_family", columnDefinition = "TEXT")
     private String catsFamily; // 猫の家族，猫的家庭
 
-    @Column(name = "blog", columnDefinition = "TEXT")
     private String blog; // ブログ，博客内容
 
 

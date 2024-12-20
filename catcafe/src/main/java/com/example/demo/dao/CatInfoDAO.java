@@ -31,4 +31,9 @@ public interface CatInfoDAO {
 	// ソフト削除猫情報（delete_flagを1に設定）
 	@Update("UPDATE cat_info SET delete_flag = 1 WHERE id = #{id}")
 	int deleteCatInfo(Long id);
+	
+	// IDで猫の情報を調べる（削除されていない猫のみ）
+	@Select("SELECT * FROM cat_info WHERE osusume_flg = #{osusumeFlg} AND delete_flag = #{deleteFlag}")
+	List<CatInfoMst> findByOsusumeFlgAndDeleteFlag(int osusumeFlg,int deleteFlag);
+
 }
