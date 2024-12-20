@@ -1,0 +1,142 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>新注册</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>新注册</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fff8e6;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ec6f55;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #98b300;
+        }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#registerBtn').on('click', function () {
+                console.log('registerBtn clicked');
+
+                // 获取输入的值
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var password = $("#password").val();
+                var confirmPassword = $("#confirmPassword").val();
+                var phone = $("#phone").val();
+
+                if (name == "" || email == "" || password == "" || confirmPassword == "" || phone == "") {
+                    alert("请填写所有必填项");
+                    return false;
+                }
+                if (password != confirmPassword) {
+                    alert("两次输入的密码不一致");
+                    return false;
+                }
+
+                $.ajax({
+                    url: '/register',
+                    type: 'post',
+                    data: {
+                        name: name,
+                        email: email,
+                        password: password,
+                        confirmPassword: confirmPassword,
+                        phone: phone
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log("收到后台返回值："+data);
+                        if (data.code == 0) {
+                            alert(data.msg);
+                        } else {
+                            alert(data.msg);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(xhr.status + " " + xhr.statusText + " " + error);
+                    }
+                });
+
+
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h1>新注册</h1>
+    <form th:action="@{/register}" method="post">
+        <div class="form-group">
+            <label for="name">你的名字</label>
+            <input type="text" id="name" name="name" placeholder="请输入你的姓名"/>
+        </div>
+        <div class="form-group">
+            <label for="email">电子邮件地址</label>
+            <input type="email" id="email" name="email" placeholder="请输入电子邮件地址"/>
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" placeholder="请输入密码"/>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">确认密码</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请输入确认密码"/>
+        </div>
+        <div class="form-group">
+            <label for="phone">电话号码</label>
+            <input type="text" id="phone" name="phone" placeholder="请输入电话号码"/>
+        </div>
+        <button type="button" id="registerBtn">注册</button>
+    </form>
+</div>
+
+</body>
+</html>
