@@ -25,3 +25,13 @@ CREATE TABLE store_info (
 );
 ALTER TABLE cat_info
 ADD COLUMN cat_age TINYINT AFTER cat_intro;
+
+CREATE TABLE about_info (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    about_title VARCHAR(255) NOT NULL, -- About 标题
+    about_description TEXT,            -- About 描述
+    team_title VARCHAR(255),           -- 团队标题
+    team_members TEXT,                 -- JSON 格式存储团队成员信息
+    cat_family_description TEXT,       -- 猫家庭描述
+    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
