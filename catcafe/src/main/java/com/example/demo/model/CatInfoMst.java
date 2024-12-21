@@ -10,7 +10,7 @@ public class CatInfoMst extends BaseModel {// 共通クラスの継承
 
 	private Integer likesCount; // 猫のいいね数
 
-	private Long osusumeFlg; // おすすめFLG
+	private Long osusumeFlg; // おすすめFLG  1：おすすめ  0：
 
 	private String catImage; // 猫の画像URL
 
