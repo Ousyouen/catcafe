@@ -6,8 +6,8 @@
     <title>猫咖管理后台</title>
 </head>
 <body>
-    <h1>{{title}}</h1>
-    <p>{{description}}</p>
-    <a href="/admin/edit">编辑首页内容</a>  <!-- 链接到编辑页面 -->
+    <h2 th:text="${title}"></h2>
+    <p th:text="${description}"></p>
+    <a href="/homepage/admin/edit">编辑首页内容</a>  <!-- 链接到编辑页面 -->
 </body>
 </html>

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HomepageManageController {
+public class indexManageController {
 
     // 显示首页
     @GetMapping("/homepage/admin")
