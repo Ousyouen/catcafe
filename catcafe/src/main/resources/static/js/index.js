@@ -68,7 +68,7 @@ $(function() {
 				var catsList = res.catsList;
 				//②画面カルーセルリスト
 				updateCarouselImages(carouselList);
-				
+
 				
 				//④	ブログ詳細	
 				updateBlogContent(catsList);
@@ -118,13 +118,13 @@ function updateBlogContent(catsList) {
 		               </div>
 		               <div class="col-md-3 blog-grid-info">
 		                   <div class="blog-grid-text">
-		                       <a href="single.html"><h3>${item.catName}</h3></a>
+		                       <a href="/cats"><h3>${item.catName}</h3></a>
 		                       <p>${item.catIntro}</p>
 		                       <button class="like-button" id="likeButton">
 		                           <i class="fas fa-thumbs-up"></i>
 		                       </button>
 		                       <span id="likeCount">${item.likesCount}</span> 
-		                       <a class="read" href="single.html">猫の詳しい情報</a>
+		                       <a class="read" href="/cats">猫の詳しい情報</a>
 		                   </div>
 		               </div>
 		               <div class="clearfix"></div>

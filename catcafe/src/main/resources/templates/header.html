@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <!-- header.html -->
@@ -103,4 +104,110 @@
 		</div>
 </body>
 </html>
-<!-- /header -->
+
+
+<html>
+<!-- header.html -->
+<head>
+<title>猫たち</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="keywords" content="猫たち、コーヒー、可愛い" />
+<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/css/style.css" rel='stylesheet' type='text/css' />
+<script src="/js/jquery.min.js">
+	
+</script>
+<link
+		href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700|Cinzel+Decorative:400,700'
+		rel='stylesheet' type='text/css'
+>
+</head>
+<body>
+		<!-- header -->
+		<div id="home" class="header" th:fragment="*">
+				<div class="header-bottom">
+						<div class="container">
+								<div class="logo">
+										<a href="index.html"><h1>
+														猫<span>カフェ</span>
+												</h1></a>
+								</div>
+								<span class="menu"></span>
+								<div class="top-menu">
+										<nav>
+												<ul>
+														<li><a href="/index">ホームページ</a></li>
+														<li><a href="/cats">猫のギャラリー</a></li>
+														<li><a href="">メニュー</a></li>
+														<li><a href="/mypage">マイページ</a></li>
+														<li><a href="/about">について</a></li>
+												</ul>
+										</nav>
+								</div>
+								<!-- script for menu -->
+								<script>
+									$("span.menu").click(
+											function() {
+												$(".top-menu").slideToggle(
+														"slow", function() {
+															// Animation complete.
+														});
+											});
+
+									// Automatically add 'active' class to the current page's menu item
+									$(document)
+											.ready(
+													function() {
+														var currentPath = window.location.pathname;
+														$('nav a')
+																.each(
+																		function() {
+																			if ($(
+																					this)
+																					.attr(
+																							'href') === currentPath) {
+																				$(
+																						this)
+																						.addClass(
+																								'active');
+																			}
+																		});
+
+														// Set the page navigation title
+														var pageName = "";
+														if (currentPath === "/cats") {
+															pageName = "猫のギャラリー";
+														} else if (currentPath === "/mypage") {
+															pageName = "マイページ";
+														} else if (currentPath === "/about") {
+															pageName = "について";
+														} else {
+															pageName = "ホームページ";
+														}
+
+														// Set the breadcrumb navigation
+														$(".pag-nav .act")
+																.text(pageName);
+													});
+								</script>
+								<!-- script for menu -->
+								<div class="clearfix"></div>
+						</div>
+				</div>
+		</div>
+		<!-- Page Banner -->
+		<div class="banner two">
+				<div class="container">
+						<div class="pag-nav">
+								<ul class="p-list">
+										<li><a href="index.html">ホームページ</a></li> &nbsp;&nbsp;/&nbsp;
+										<li class="act">&nbsp;ホームページ</li>
+										<!-- This will change based on the page -->
+								</ul>
+						</div>
+				</div>
+		</div>
+</body>
+</html>
+
