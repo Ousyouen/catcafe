@@ -23,5 +23,18 @@ CREATE TABLE store_info (
     delete_flag TINYINT DEFAULT 0,         -- 删除标志，0 表示未删除，1 表示已删除
     update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  -- 更新时间，自动更新
 );
+
+create table tab_user
+(
+    id       int auto_increment comment '主键'
+        primary key,
+    name     varchar(50) null comment '名字',
+    email    varchar(30) null comment '邮箱',
+    password varchar(30) null comment '密码',
+    phone    varchar(20) null comment '电话号码',
+    create_time datetime not null default current_timestamp comment '创建时间',
+    update_time datetime not null default current_timestamp comment '更新时间',
+    del_flag int not null default 0 comment '是否删除 0-未删除，1-已删除'
+) comment '用户表';
 ALTER TABLE cat_info
 ADD COLUMN cat_age TINYINT AFTER cat_intro;
