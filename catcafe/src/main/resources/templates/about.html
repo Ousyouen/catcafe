@@ -53,22 +53,22 @@
         <div class="container">
             <div class="about-head">
                 <h3 th:text="${aboutInfo.aboutTitle}"></h3>
-                <p th:text="${aboutInfo.}"></p>
+                <p th:text="${aboutInfo.aboutDescription}"></p>
             </div>
             <div class="cat-info-section">
                 <div class="cat-info-left">
-                    <img src="images/cat.jpg" alt="" />
+                    <img th:src="'/images/' + ${aboutInfo.catImageUrl}" alt="Cat Image" />
                 </div>
                 <div class="cat-info-middle">
-                    <h4>Cat Info</h4>
+                    <h4 th:text="${aboutInfo.catName}"></h4>
                 </div>
                 <div class="cat-info-right">
-                    <h3>Lorem Ipsum Simply</h3>
-                    <p>Ut wisi enim ad minim veniam...</p>
+                    <h3></h3>
+                    <p　th:text="${aboutInfo.catDescription}"></p>
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <p>Lorem ipsum dolor sit amet...</p>
+            <p　th:text="${aboutInfo.catTip}"></p>
         </div>
     </div>
     <!-- End About Section -->
@@ -78,19 +78,19 @@
         <div class="container">
             <div class="team">
                 <div class="col-md-4 team-left">
-                    <h3>Our Team</h3>
+                    <h3 th:text="${aboutInfo.teamTitle}"></h3>
                 </div>
                 <div class="col-md-8 team-right">
                     <ul class="ch-grid">
                         <li>
-                            <div class="ch-item ch-img-1">
+                            <div class="ch-item"style="background-image: url('${aboutInfo.teamUrl}');">
                                 <div class="ch-info">
                                     <h3>Brainiac</h3>
                                     <p>by Daniel Nyari <a href="#">View on Dribbble</a></p>
                                 </div>
                             </div>
-                            <h4>Michael Freeman</h4>
-                            <p>Nulla facilisi...</p>
+                            <h4 th:text="${aboutInfo.teamDescription}"></h4>
+                            <p th:text="${aboutInfo.teamMembers}"></p>
                             <a class="read third" href="single.html">Read More</a>
                         </li>
                         <!-- Add More Team Members Here -->

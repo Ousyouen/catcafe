@@ -27,12 +27,19 @@ ALTER TABLE cat_info
 ADD COLUMN cat_age TINYINT AFTER cat_intro;
 
 CREATE TABLE about_info (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    about_title VARCHAR(255) NOT NULL, -- About 标题
-    about_description TEXT,            -- About 描述
-    team_title VARCHAR(255),           -- 团队标题
-    team_members TEXT,                 -- JSON 格式存储团队成员信息
-    cat_family_description TEXT,       -- 猫家庭描述
-    delete_flag TINYINT DEFAULT 0,
-    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,             -- 主キー、自動増加
+    about_title VARCHAR(255) NOT NULL,               -- Aboutタイトル
+    about_description TEXT,                          -- Aboutの説明
+    cat_image_url VARCHAR(255),                      -- 猫の画像URL
+    cat_name VARCHAR(255),                           -- 猫の名前
+    cat_tip TEXT,                                    -- 注意事項
+    cat_description TEXT,                            -- 猫の詳細説明
+    team_title VARCHAR(255),                         -- チームタイトル
+    team_url VARCHAR(255),                           -- チーム画像URL
+    team_description TEXT,                           -- チームの説明
+    team_members TEXT,                               -- チームメンバー情報
+    delete_flag TINYINT DEFAULT 0,                   -- 削除フラグ、0:未削除、1:削除済み
+    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- 更新日時
 );
+
+
