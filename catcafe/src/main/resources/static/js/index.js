@@ -63,6 +63,8 @@ $(function() {
 				var catsList = res.catsList;
 				//②画面カルーセルリスト
 				updateCarouselImages(carouselList);
+				$("#blogContent").text(blog);
+				
 				//④	ブログ詳細	
 				updateBlogContent(catsList);
 			},
