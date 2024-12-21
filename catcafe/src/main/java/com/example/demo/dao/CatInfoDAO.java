@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-
 @Mapper
 public interface CatInfoDAO {
 	// 猫情報の検索（削除されていない猫のみ）
@@ -19,8 +18,8 @@ public interface CatInfoDAO {
 	CatInfoMst findCatInfoById(Long id);
 
 	// 猫情報の挿入（削除されていない猫のみ）
-	@Insert("INSERT INTO cat_info (cat_name, cat_intro, cat_age,cat_image ) "
-			+ "VALUES (#{catName}, #{catIntro},  #{catAge}, #{catImage})")
+	@Insert("INSERT INTO cat_info (cat_name, cat_intro, cat_age, cat_image) "
+			+ "VALUES (#{catName}, #{catIntro}, #{catAge}, #{catImage})")
 	int insertCatInfo(CatInfoMst catInfo);
 
 	// 猫情報の更新（削除されていない猫のみ）

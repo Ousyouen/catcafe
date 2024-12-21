@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dao.CatInfoDAO;
 import com.example.demo.model.CatInfoMst;
-
-
-
 
 @Service
 public class CatInfoService {
@@ -23,7 +19,6 @@ public class CatInfoService {
 		return catInfoDAO.findCatInfo();
 	}
 
-	
 	// IDで猫の情報を取得（削除されていない猫のみ）
 	public CatInfoMst getCatInfoById(Long id) {
 		return catInfoDAO.findCatInfoById(id);
