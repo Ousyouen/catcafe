@@ -1,189 +1,92 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script
+		src="https://cdn.jsdelivr.net/npm/jquery-ui-to-top@1.0.1/jquery.ui.totop.min.js"
+></script>
 </head>
 <body>
-<div th:replace="~{header}"></div>
-
-<!--gallery-->
-	<div class="gallery services">
-		<div class="container">  
-				<div class="port-head">
-				   <h3>猫たち</h3>
-				   <p>猫は、愛らしくて魅力的な動物で、家庭で飼われることが多いです。彼らは柔らかい毛と大きな目が特徴で、愛される存在です。猫は遊ぶことが好きで、活発に動き回りますが、時にはゆっくりとくつろいでいる姿も見られます。その独立した性格と、時々見せる甘えん坊な一面が、猫の魅力の一つです。猫は私たちの生活に癒しと楽しさをもたらしてくれます。彼らの優雅な動きと、無邪気な表情を見ていると、時間を忘れてしまうこともあります。猫はただのペットではなく、家族の一員として、私たちの心を温かくしてくれる存在です。</p>
-			  	</div>
-			<div class="cats-bottom">
-				<div class="gallery-one two">
-					<div class="row">
-    <div class="col-md-3 gallery-left">
-        <a href="images/g1.jpg" class="mask b-link-stripe b-animate-go swipebox" title="ハツラツ">
-            <img src="images/g1.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: ハツラツ</p>
-            <p>性格: 非常に活発で元気いっぱいで、あちこちを走り回り、エネルギッシュです。</p>
-            <p>年齢: 2歳</p>
-        </div>
-    </div>
-    <div class="col-md-3 gallery-left">
-        <a href="images/g2.jpg" class="mask b-link-stripe b-animate-go swipebox" title="ジズク">
-            <img src="images/g2.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: ジズク</p>
-            <p>性格: 静かな環境が好きで、寝やかな場所ではあまり得意ではありません。</p>
-            <p>年齢: 3歳</p>
-        </div>
-    </div>
-    <div class="col-md-3 gallery-left">
-        <a href="images/g3.jpg" class="mask b-link-stripe b-animate-go swipebox" title="イタズラ">
-            <img src="images/g3.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: イタズラ</p>
-            <p>性格: とてもいたずら好きで、よく騒ぎを起こし、落ち着きさがありません。</p>
-            <p>年齢: 1歳</p>
-        </div>
-    </div>
-    <div class="col-md-3 gallery-left">
-        <a href="images/g4.jpg" class="mask b-link-stripe b-animate-go swipebox" title="セイフウ">
-            <img src="images/g4.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: セイフウ</p>
-            <p>性格: 静かで優雅な性格で、ひとりで過ごすのが好きです。</p>
-            <p>年齢: 4歳</p>
-        </div>
-    </div>
-    <div class="col-md-3 gallery-left">
-        <a href="images/g5.jpg" class="mask b-link-stripe b-animate-go swipebox" title="カエン">
-            <img src="images/g5.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: カエン</p>
-            <p>性格: 性格が激しく、高強度の活動が好きで、常にエネルギッシュです。</p>
-            <p>年齢: 1歳半</p>
-        </div>
-    </div>
-    <div class="col-md-3 gallery-left">
-        <a href="images/g6.jpg" class="mask b-link-stripe b-animate-go swipebox" title="シルク">
-            <img src="images/g6.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: シルク</p>
-            <p>性格: 穏やかで繊細な性格で、静かな環境が特に好きです。</p>
-            <p>年齢: 2歳</p>
-        </div>
-    </div>
-    <div class="col-md-3 gallery-left">
-        <a href="images/g7.jpg" class="mask b-link-stripe b-animate-go swipebox" title="タビット">
-            <img src="images/g7.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: タビット</p>
-            <p>性格: 探索が大好きで、いろいろな場所に行くことが好きです。</p>
-            <p>年齢: 3歳</p>
-        </div>
-    </div>
-    <div class="col-md-3 gallery-left">
-        <a href="images/g8.jpg" class="mask b-link-stripe b-animate-go swipebox" title="ネコサン">
-            <img src="images/g8.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: ネコサン</p>
-            <p>性格: とても甘えん坊で、人懐っこく、すぐに膝に乗りたがります。</p>
-            <p>年齢: 2歳</p>
-        </div>
-    </div>
-    <div class="col-md-3 gallery-left">
-        <a href="images/g9.jpg" class="mask b-link-stripe b-animate-go swipebox" title="サクラ">
-            <img src="images/g9.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: サクラ</p>
-            <p>性格: 明るくて元気な性格で、みんなと遊ぶのが大好きです。</p>
-            <p>年齢: 1歳</p>
-        </div>
-    </div>
-    <div class="col-md-3 gallery-left">
-        <a href="images/g10.jpg" class="mask b-link-stripe b-animate-go swipebox" title="クロコ">
-            <img src="images/g10.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: クロコ</p>
-            <p>性格: 落ち着いていて、静かな時間を過ごすのが好きです。</p>
-            <p>年齢: 3歳</p>
-        </div>
-    </div>
-    <div class="col-md-3 gallery-left">
-        <a href="images/g11.jpg" class="mask b-link-stripe b-animate-go swipebox" title="ミント">
-            <img src="images/g11.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: ミント</p>
-            <p>性格: とても好奇心旺盛で、何でも調べるのが大好きです。</p>
-            <p>年齢: 2歳</p>
-        </div>
-    </div>
-    <div class="col-md-3 gallery-left">
-        <a href="images/g12.jpg" class="mask b-link-stripe b-animate-go swipebox" title="ルナ">
-            <img src="images/g12.jpg" alt="" class="img-responsive zoom-img"/>
-        </a>
-        <div class="cat-info">
-            <p>名前: ルナ</p>
-            <p>性格: 静かでおとなしい性格で、日向ぼっこをしているのが好きです。</p>
-            <p>年齢: 3歳</p>
-        </div>
-    </div>
-</div>					
+		<div th:replace="~{header}"></div>
+		<!--gallery-->
+		<div class="gallery services">
+				<div class="container">
+						<div class="port-head">
+								<h3>猫たち</h3>
+								<p>猫は、愛らしくて魅力的な動物で、家庭で飼われることが多いです。彼らは柔らかい毛と大きな目が特徴で、愛される存在です。猫は遊ぶことが好きで、活発に動き回りますが、時にはゆっくりとくつろいでいる姿も見られます。その独立した性格と、時々見せる甘えん坊な一面が、猫の魅力の一つです。猫は私たちの生活に癒しと楽しさをもたらしてくれます。彼らの優雅な動きと、無邪気な表情を見ていると、時間を忘れてしまうこともあります。猫はただのペットではなく、家族の一員として、私たちの心を温かくしてくれる存在です。</p>
+						</div>
+						<div class="cats-bottom">
+								<div class="gallery-one two">
+										<div class="row">
+												<div th:each="cat : ${cats}" class="col-md-3 gallery-left">
+														<a th:href="@{${cat.catImage}}"
+																class="mask b-link-stripe b-animate-go swipebox"
+																th:title="${cat.catName}"
+														> <img th:src="@{${cat.catImage}}" alt=""
+																class="img-responsive zoom-img"
+														/>
+														</a>
+														<div class="cat-info">
+																<p>
+																		名前: <span th:text="${cat.catName}"></span>
+																</p>
+																<p>
+																		性格: <span th:text="${cat.catIntro}"></span>
+																</p>
+																<p>
+																		年齢: <span th:text="${cat.catAge}"></span>歳
+																</p>
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
 				</div>
-			</div>
 		</div>
-	</div>
-	<!--swipebox -->	
-			<link rel="stylesheet" href="css/swipebox.css">
-				<script src="js/jquery.swipebox.min.js"></script> 
-				<script type="text/javascript">
-					jQuery(function($) {
-						$(".swipebox").swipebox();
-					});
-				</script>
-			<!--//swipebox Ends -->
-
-<!----family--->
-	<div class="c-family">
-		<div class="container">
-		       <div class="family-top">
-			    <h3>家族の一員としての猫 !!</h3>
-				   <p>私たちの猫の大家族は、愛らしい猫たちがたくさん集まった楽しい場所です。各々の猫は独自の性格を持ち、時にはお互いにいたずらをしたり、静かに寄り添ったりしています。猫たちの多様性が魅力で、どの猫も家族の一員として大切にされています。この家族の一員として、毎日が新しい発見と喜びに満ちています。猫たちと一緒に過ごす時間は、心温まるひとときです。
-
-</p>
-				   <a class="read two" href="#">もっと見る</a>
-			   </div>
+		<!--swipebox -->
+		<link rel="stylesheet" href="css/swipebox.css">
+		<script src="js/jquery.swipebox.min.js"></script>
+		<script type="text/javascript">
+			jQuery(function($) {
+				$(".swipebox").swipebox();
+			});
+		</script>
+		<!--//swipebox Ends -->
+		<!----family--->
+		<div class="c-family">
+				<div class="container">
+						<div class="family-top">
+								<h3>家族の一員としての猫 !!</h3>
+								<p>私たちの猫の大家族は、愛らしい猫たちがたくさん集まった楽しい場所です。各々の猫は独自の性格を持ち、時にはお互いにいたずらをしたり、静かに寄り添ったりしています。猫たちの多様性が魅力で、どの猫も家族の一員として大切にされています。この家族の一員として、毎日が新しい発見と喜びに満ちています。猫たちと一緒に過ごす時間は、心温まるひとときです。
+								</p>
+								<a class="read two" href="#">もっと見る</a>
+						</div>
+				</div>
 		</div>
-	</div>
-<!---- footer --->
-<div th:replace="~{footer}"></div>
-
-<!-- スムーズスクロール -->
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $(".scroll").click(function(event){
-            event.preventDefault();
-            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-        });
-    });
-</script>
-
-<!-- 上に戻るボタン -->
-<script type="text/javascript">
-    $(document).ready(function() {
-        $().UItoTop({ easingType: 'easeOutQuart' });
-    });
-</script>
-
-<a href="#home" id="toTop" class="scroll" style="display: block;">
-    <span id="toTopHover" style="opacity: 1;"> </span>
-</a>	 
+		<!---- footer --->
+		<div th:replace="~{footer}"></div>
+		<!-- スムーズスクロール -->
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event) {
+					event.preventDefault();
+					$('html,body').animate({
+						scrollTop : $(this.hash).offset().top
+					}, 1000);
+				});
+			});
+		</script>
+		<!-- 上に戻るボタン -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$().UItoTop({
+					easingType : 'easeOutQuart'
+				});
+			});
+		</script>
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span
+				id="toTopHover" style="opacity: 1;"
+		> </span>
+		</a>
 </body>
 </html>

@@ -1,58 +1,50 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+public class CatInfoMst extends BaseModel {// 共通クラスの継承
 
-@Entity
-public class CatInfoMst extends BaseModel{
+	private String catName; // 猫の名前
 
-    @Column(name = "cat_name", nullable = false)
-    private String catName; // 猫の名前，猫的名字
+	private String catIntro; // 猫の紹介
 
-    @Column(name = "cat_intro", columnDefinition = "TEXT")
-    private String catIntro; // 猫の紹介，猫的介绍
+	private int catAge;// 猫の年齢
 
-    @Column(name = "likes_count")
-    private Integer likesCount; // 猫のいいね数，猫的点赞数
-    
-    @Column(name = "osusume_flg")
-    private Long osusumeFlg;      // おすすめFLG (1表示推荐)
+	private Integer likesCount; // 猫のいいね数
 
-    @Column(name = "cat_image")
-    private String catImage; // 猫の画像，猫的图片URL（或其他存储方式）
+	private Long osusumeFlg; // おすすめFLG  1：おすすめ  0：
 
+	private String catImage; // 猫の画像URL
 
-    public String getCatName() {
-        return catName;
-    }
+	public String getCatName() {
+		return catName;
+	}
 
-    public void setCatName(String catName) {
-        this.catName = catName;
-    }
+	public void setCatName(String catName) {
+		this.catName = catName;
+	}
 
-    public String getCatIntro() {
-        return catIntro;
-    }
+	public String getCatIntro() {
+		return catIntro;
+	}
 
-    public void setCatIntro(String catIntro) {
-        this.catIntro = catIntro;
-    }
+	public void setCatIntro(String catIntro) {
+		this.catIntro = catIntro;
+	}
 
-    public Integer getLikesCount() {
-        return likesCount;
-    }
+	public Integer getLikesCount() {
+		return likesCount;
+	}
 
-    public void setLikesCount(Integer likesCount) {
-        this.likesCount = likesCount;
-    }
+	public void setLikesCount(Integer likesCount) {
+		this.likesCount = likesCount;
+	}
 
-    public String getCatImage() {
-        return catImage;
-    }
+	public String getCatImage() {
+		return catImage;
+	}
 
-    public void setCatImage(String catImage) {
-        this.catImage = catImage;
-    }
+	public void setCatImage(String catImage) {
+		this.catImage = catImage;
+	}
 
 	public Long getOsusumeFlg() {
 		return osusumeFlg;
@@ -61,6 +53,13 @@ public class CatInfoMst extends BaseModel{
 	public void setOsusumeFlg(Long osusumeFlg) {
 		this.osusumeFlg = osusumeFlg;
 	}
-    
-    
+
+	public int getCatAge() {
+		return catAge;
+	}
+
+	public void setCatAge(int catAge) {
+		this.catAge = catAge;
+	}
+
 }

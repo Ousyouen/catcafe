@@ -3,7 +3,7 @@ CREATE TABLE cat_info (
     cat_name VARCHAR(255) NOT NULL,         -- 猫の名前
     cat_intro TEXT,                         -- 猫の紹介
     likes_count INT,                        -- 猫のいいね数
-    osusume_flg INT,                        -- 猫のいいね数
+    osusume_flg INT,                        -- おすすめFLG
     cat_image VARCHAR(255),                 -- 猫の画像
     delete_flag TINYINT DEFAULT 0,          -- 删除标志，0 表示未删除，1 表示已删除
     update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  -- 更新时间，自动更新
@@ -23,3 +23,5 @@ CREATE TABLE store_info (
     delete_flag TINYINT DEFAULT 0,         -- 删除标志，0 表示未删除，1 表示已删除
     update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  -- 更新时间，自动更新
 );
+ALTER TABLE cat_info
+ADD COLUMN cat_age TINYINT AFTER cat_intro;
