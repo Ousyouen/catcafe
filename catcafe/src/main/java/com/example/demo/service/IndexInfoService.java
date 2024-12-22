@@ -52,20 +52,19 @@ public class IndexInfoService {
         indexInfoDTO.setBlog(storeInfo.getBlog());
 
         // 获取猫的信息列表
-        List<CatInfoMst> cats = catInfoDAO.findByOsusumeFlgAndDeleteFlag(1, 0);
+      //  List<CatInfoMst> cats = catInfoDAO.findByOsusumeFlgAndDeleteFlag(1, 0);
 
         // 将每个猫的信息封装到DTO中
-        List<CatInfoMst> catInfoDTOList = cats.stream().map(cat -> {
-        	CatInfoMst catInfoMst = new CatInfoMst();
-        	catInfoMst.setCatName(cat.getCatName());
-        	catInfoMst.setCatIntro(cat.getCatIntro());
-        	catInfoMst.setLikesCount(cat.getLikesCount());
-        	catInfoMst.setCatImage(cat.getCatImage());
-            return catInfoMst;
-        }).collect(Collectors.toList());
-
+		/*
+		 * List<CatInfoMst> catInfoDTOList = cats.stream().map(cat -> { CatInfoMst
+		 * catInfoMst = new CatInfoMst(); catInfoMst.setCatName(cat.getCatName());
+		 * catInfoMst.setCatIntro(cat.getCatIntro());
+		 * catInfoMst.setLikesCount(cat.getLikesCount());
+		 * catInfoMst.setCatImage(cat.getCatImage()); return catInfoMst;
+		 * }).collect(Collectors.toList());
+		 */
         // 设置猫的信息列表
-        indexInfoDTO.setCatsList(catInfoDTOList);
+       // indexInfoDTO.setCatsList(catInfoDTOList);
 
         return indexInfoDTO;
     }

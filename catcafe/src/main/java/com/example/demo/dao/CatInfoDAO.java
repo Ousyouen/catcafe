@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-
 @Mapper
 public interface CatInfoDAO {
 	// 猫情報の検索（削除されていない猫のみ）
@@ -19,8 +18,8 @@ public interface CatInfoDAO {
 	CatInfoMst findCatInfoById(Long id);
 
 	// 猫情報の挿入（削除されていない猫のみ）
-	@Insert("INSERT INTO cat_info (cat_name, cat_intro, cat_age,cat_image ) "
-			+ "VALUES (#{catName}, #{catIntro},  #{catAge}, #{catImage})")
+	@Insert("INSERT INTO cat_info (cat_name, cat_intro, cat_age, cat_image) "
+			+ "VALUES (#{catName}, #{catIntro}, #{catAge}, #{catImage})")
 	int insertCatInfo(CatInfoMst catInfo);
 
 	// 猫情報の更新（削除されていない猫のみ）
@@ -31,9 +30,4 @@ public interface CatInfoDAO {
 	// ソフト削除猫情報（delete_flagを1に設定）
 	@Update("UPDATE cat_info SET delete_flag = 1 WHERE id = #{id}")
 	int deleteCatInfo(Long id);
-	
-	// おすすめの猫を取得（削除されていない猫のみ）
-	@Select("SELECT * FROM cat_info WHERE osusume_flg = #{osusumeFlg} AND delete_flag = #{deleteFlag}")
-	List<CatInfoMst> findByOsusumeFlgAndDeleteFlag(int osusumeFlg,int deleteFlag);
-
 }
