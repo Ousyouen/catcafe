@@ -7,6 +7,7 @@
     <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery.min.js"></script>
+    <script src="/js/save.js"></script>
 </head>
 <body>
     <!-- Navigation Script -->
@@ -58,42 +59,42 @@
         </div>   
     </div>
 
-    <!-- User Profile Section -->
-    <div class="user-profile">
-        <div class="container">
-            <h3 class="text-center mb-4">ユーザープロフィール</h3>
-            <div class="profile-details">
-                <form action="/update_profile" method="post" enctype="multipart/form-data">
-                    <div class="row align-items-center">
-                        <div class="col-md-3 text-center">
-                            <label for="avatarUpload">
-                                <img src="/images/user_avatar.jpg" alt="User Avatar" class="img-responsive img-circle" style="max-width: 150px; margin: auto; cursor: pointer;" id="avatarPreview" />
-                            </label>
-                            <p class="mt-2" style="font-size: 0.9em; color: #666;">アイコンをクリックして更新</p>
-                            <input type="file" name="avatar" id="avatarUpload" accept="image/*" style="display: none;">
-                        </div>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <label for="username">ユーザー名:</label>
-                                <input type="text" name="username" id="username" class="form-control" value="田中 猫子">
-                            </div>
-                            <div class="form-group">
-                                <label for="birthday">生年月日:</label>
-                                <input type="date" name="birthday" id="birthday" class="form-control" value="1990-01-01">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">メールアドレス:</label>
-                                <input type="email" name="email" id="email" class="form-control" value="neko.tanaka@example.com">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">保存</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <!-- User Profile Section -->
+    <div class="container">
+        <!-- 添加 null 检查 -->
+        <div th:if="${user == null}">
+            <h2 class="text-center text-danger mt-5">ユーザー情報が見つかりません。</h2>
+            <p class="text-center">指定されたユーザーIDに対応するデータが存在しません。</p>
         </div>
+        <input type="hidden" id="userId" class="form-control" th:value="${user.id}">
+            <div class="row align-items-center">
+                <div class="col-md-3 text-center">
+                    <label for="avatarUpload">
+                        <img th:src="@{/images/user_avatar.jpg}" alt="User Avatar" class="img-responsive img-circle" style="max-width: 150px; margin: auto; cursor: pointer;" id="avatarPreview" />
+                    </label>
+                    <p class="mt-2" style="font-size: 0.9em; color: #666;">アイコンをクリックして更新</p>
+                    <input type="file" name="avatar" id="avatarUpload" accept="image/*" style="display: none;">
+                </div>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label for="username">ユーザー名:</label>
+                        <input type="text" name="username" id="username" class="form-control" th:value="${user.username}">
+                    </div>
+                    <div class="form-group">
+                        <label for="birthday">生年月日:</label>
+                        <input type="date" name="birthday" id="birthday" class="form-control" th:value="${#dates.format(user.birthday, 'yyyy-MM-dd')}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス:</label>
+                        <input type="email" name="email" id="email" class="form-control" th:value="${user.email}">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" id="saveButton" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </div>
     </div>
+
 
     <!-- Gallery Section -->
     <div class="gallery services py-5">
