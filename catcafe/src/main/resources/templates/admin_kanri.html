@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>猫カフェホームページ管理</title>
+    <title>猫カフェ管理画面</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Reset some default styles */
@@ -17,7 +17,9 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
-            padding-bottom: 40px; /* 为了防止footer遮挡内容，给底部预留空间 */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures the body takes at least full height */
         }
 
         /* Header Style */
@@ -61,6 +63,7 @@
         .container {
             display: flex;
             margin: 20px;
+            flex-grow: 1; /* This will make the content area take up remaining space */
         }
 
         /* Sidebar */
@@ -122,21 +125,20 @@
 
         /* Footer */
         footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
             background-color: #34495e;
             color: white;
             padding: 10px;
             text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%; /* Ensures footer takes full width */
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <h1>猫カフェホームページ管理</h1>
+        <h1>猫カフェ管理画面</h1>
     </header>
 
     <!-- Navigation -->
@@ -144,9 +146,9 @@
         <ul>
             <li><a href="/">ホームページ</a></li>
             <li><a href="/cats">猫のギャラリー</a></li>
-            <li><a href="/menu">メニュー</a></li>
+            <li><a href="">メニュー</a></li>
             <li><a href="/mypage">マイページ</a></li>
-            <li><a href="/about">私たちについて</a></li>
+            <li><a href="/about">について</a></li>
         </ul>
     </nav>
 
@@ -156,57 +158,23 @@
         <div class="sidebar">
             <ul>
                 <li><a href="/homepage/admin/edit">ホームページ管理</a></li>
-                <li><a href="/homepage/admin/storeinfo">当店は？管理</a></li>
-                <li><a href="/homepage/admin/catsinfo">猫情報管理</a></li>
-                <li><a href="/homepage/admin/adoption">里親募集管理</a></li>
-                <li><a href="/homepage/admin/blog">ブログ管理</a></li>
+                <li><a href="#">予約管理</a></li>
+                <li><a href="#">猫情報管理</a></li>
+               
+               
             </ul>
         </div>
 
         <!-- Content Area -->
         <div class="content">
-            <h2>当店は？管理</h2>
             
-            <!-- Store Introduction Section -->
-            <div class="card">
-                <h3>当店は？</h3>
-                <textarea id="storeIntr" rows="6" style="width:100%; padding: 10px;">
-                  ようこそ、当店の猫カフェへ！ここは、温かく落ち着いた雰囲気の場所で、美味しいコーヒーを楽しみながら、かわいい猫たちと親しく触れ合い、彼らがもたらす温もりと静けさを感じることができます。どの猫も私たちの家族の一員で、柔らかな毛と優しい目で、リラックスした時間を過ごすお手伝いをしてくれます。疲れた日や、ゆったりとした午後を過ごしたい時に、ぜひお越しください。
-                </textarea>
-            </div>
-
-            <!-- Cat Introduction Section -->
-            <div class="card">
-                <h3>猫たちの紹介</h3>
-                <textarea id="catsIntr" rows="6" style="width:100%; padding: 10px;">
-                    ここにいる猫たちはみんな個性豊かで、愛らしい魅力を持っています！遊ぶのが大好きな子も、お昼寝が得意な子も、あなたと素敵な時間を過ごす準備ができています。ふわふわの毛並みと、キラキラした瞳であなたを迎えてくれるでしょう。猫たちとの時間は、きっと癒しと笑顔でいっぱいになるはずです！
-                </textarea>
-            </div>
-
-            <!-- Save Button -->
-            <div class="card">
-                <button onclick="saveChanges()" style="padding: 10px 20px; background-color: #1abc9c; color: white; border: none; font-size: 16px;">保存</button>
             </div>
         </div>
-    </div>
+   
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 猫カフェホームページ管理. All rights reserved.</p>
+        <p>&copy; 2024 猫カフェ管理画面. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Simulating the saving of the changes (in a real application, you'd likely send these to the server)
-        function saveChanges() {
-            const storeIntr = document.getElementById('storeIntr').value;
-            const catsIntr = document.getElementById('catsIntr').value;
-            
-            console.log('保存された内容:');
-            console.log('当店は？:', storeIntr);
-            console.log('猫たちの紹介:', catsIntr);
-            
-            alert('変更が保存されました！');
-        }
-    </script>
 </body>
 </html>
