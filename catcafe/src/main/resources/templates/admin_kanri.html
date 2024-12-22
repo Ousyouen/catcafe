@@ -1,180 +1,49 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>猫カフェ管理画面</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* Reset some default styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* Ensures the body takes at least full height */
-        }
-
-        /* Header Style */
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 24px;
-        }
-
-        /* Navigation Style */
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            background-color: #34495e;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #1abc9c;
-        }
-
-        /* Main Container */
-        .container {
-            display: flex;
-            margin: 20px;
-            flex-grow: 1; /* This will make the content area take up remaining space */
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 250px;
-            background-color: #2c3e50;
-            color: white;
-            padding-top: 20px;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            padding: 15px;
-            border-bottom: 1px solid #34495e;
-        }
-
-        .sidebar ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 16px;
-            display: block;
-        }
-
-        .sidebar ul li a:hover {
-            background-color: #34495e;
-        }
-
-        /* Content Area */
-        .content {
-            flex: 1;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .content h2 {
-            margin-bottom: 20px;
-            font-size: 28px;
-            color: #2c3e50;
-        }
-
-        .content p {
-            font-size: 16px;
-            color: #7f8c8d;
-        }
-
-        .content .card {
-            background-color: #ecf0f1;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #34495e;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%; /* Ensures footer takes full width */
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>猫カフェ管理画面</title>
+<link rel="stylesheet" href="css/admin-style.css">
+<!-- 引用外部CSS文件 -->
+<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+>
+<!-- 引用 Font Awesome 图标库 -->
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>猫カフェ管理画面</h1>
-    </header>
-
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="/">ホームページ</a></li>
-            <li><a href="/cats">猫のギャラリー</a></li>
-            <li><a href="">メニュー</a></li>
-            <li><a href="/mypage">マイページ</a></li>
-            <li><a href="/about">について</a></li>
-        </ul>
-    </nav>
-
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <ul>
-                <li><a href="/homepage/admin/edit">ホームページ管理</a></li>
-                <li><a href="#">予約管理</a></li>
-                <li><a href="/catManage">猫情報管理</a></li>
-               
-               
-            </ul>
-        </div>
-
-        <!-- Content Area -->
-        <div class="content">
-            
-            </div>
-        </div>
-   
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 猫カフェ管理画面. All rights reserved.</p>
-    </footer>
+		<!-- Header -->
+		<header>
+				<h1>猫カフェ管理画面</h1>
+		</header>
+		<!-- Navigation -->
+		<nav>
+				<ul>
+						<li><a href="/">ホームページ</a></li>
+						<li><a href="/cats">猫のギャラリー</a></li>
+						<li><a href="">メニュー</a></li>
+						<li><a href="/mypage">マイページ</a></li>
+						<li><a href="/about">について</a></li>
+				</ul>
+		</nav>
+		<!-- Main Container -->
+		<div class="container">
+				<!-- Sidebar -->
+				<div class="sidebar">
+						<ul>
+								<li><a href="/homepage/admin/edit">ホームページ管理</a></li>
+								<li><a href="#">予約管理</a></li>
+								<li><a href="/catManage">猫情報管理</a></li>
+						</ul>
+				</div>
+				<!-- Content Area -->
+				<div class="content"></div>
+		</div>
+		<!-- Footer -->
+		<footer>
+				<p>&copy; 2024 猫カフェ管理画面. 全著作権所有.</p>
+		</footer>
+		<!-- 引用外部 JavaScript 文件 -->
+		<script src="js/admin.js"></script>
 </body>
 </html>
