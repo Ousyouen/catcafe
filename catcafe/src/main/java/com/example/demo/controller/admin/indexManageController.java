@@ -15,7 +15,7 @@ public class indexManageController {
 	@GetMapping("/homepage/admin")
     public String index() {
       
-        return "admin_index";  // 返回模板的名字
+        return "admin_kanri";  // 返回模板的名字
     }
 
     // 编辑首页内容
