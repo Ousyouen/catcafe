@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>猫情報管理ページ</title>
-    <link rel="stylesheet" href="css/management-style.css"> <!-- 外部CSSを読み込む -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>猫情報管理ページ</title>
+<link rel="stylesheet" href="css/management-style.css">
+<!-- 外部CSSを読み込む -->
 </head>
 <body>
-    <div class="container">
-        <h1>猫情報管理</h1>
-
-        <!-- 四つのモジュールを並べて表示 -->
-        <div class="form-section">
+		<div class="container">
+				<h1>猫情報管理</h1>
+				<!-- 四つのモジュールを並べて表示 -->
+				<div class="form-section">
 						<!-- 猫情報の変更 -->
 						<form id="updateForm">
 								<h2>猫情報の変更</h2>
@@ -29,65 +29,68 @@
 								<button type="submit">変更する</button>
 						</form>
 						<!-- 新しい猫の追加 -->
-            <form id="addForm" method="post" action="/catManage/add" enctype="multipart/form-data">
-                <h2>新しい猫を追加</h2>
-                <label for="newCatName">名前:</label>
-                <input type="text" id="newCatName" name="name" placeholder="猫咪名称" required />
-                <br>
-                <label for="newCatPersonality">性格:</label>
-                <input type="text" id="newCatPersonality" name="personality" placeholder="猫咪性格" required />
-                <br>
-                <label for="newCatAge">年齢:</label>
-                <input type="number" id="newCatAge" name="age" placeholder="猫咪年龄" required />
-                <br>
-                <label for="newCatImage">画像を選んでください:</label>
-                <input type="file" id="newCatImage" name="image" />
-                <br>
-                <br>
-                <button type="submit">猫咪を追加する</button>
-            </form>
-
-            <!-- 猫情報を削除 -->
-            <form id="deleteForm">
-                <h2>猫情報を削除</h2>
-                <label for="deleteSelect">削除したい猫を選んでください:</label>
-                <select id="deleteSelect">
-                    <!-- オプションは動的に追加されます -->
-                </select>
-                <br>
-                <button type="submit">削除する</button>
-            </form>
-
-         <!-- 猫情報を検索 -->
-<form id="searchForm">
-    <h2>猫情報の検索</h2>
-    <label for="catSelectSearch">猫を選んでください:</label>
-    <select id="catSelectSearch">
-        <!-- 猫の名前は動的に追加されます -->
-    </select>
-    <br>
-</form>
-
-<!-- 模态框结构 -->
-<div id="catInfoModal" style="display:none;">
-    <div id="modalContent">
-        <h3>猫情報</h3>
-        <p><strong>名前:</strong> <span id="modalCatName"></span></p>
-        <p><strong>性格:</strong> <span id="modalCatIntro"></span></p>
-        <p><strong>年齢:</strong> <span id="modalCatAge"></span></p>
-        <p><strong>好き数:</strong> <span id="modalLikesCount"></span></p>
-        <img id="modalCatImage" src="" alt="猫の画像" style="max-width: 100%; height: auto;">
-        <br>
-        <button id="closeModal">閉じる</button>
-    </div>
-</div>
-    </div>
-    
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ui.totop/1.0.0/jquery.ui.totop.min.js"></script>
-<script src="js/management.js"></script>
-
-
-    
-</body> 
+						<form id="addForm" method="post" action="/catManage/add"
+								enctype="multipart/form-data"
+						>
+								<h2>新しい猫を追加</h2>
+								<label for="newCatName">名前:</label> <input type="text" id="newCatName"
+										name="name" placeholder="猫の名前" required
+								/> <br> <label for="newCatPersonality">性格:</label> <input
+										type="text" id="newCatPersonality" name="personality"
+										placeholder="猫の性格" required
+								/> <br> <label for="newCatAge">年齢:</label> <input type="number"
+										id="newCatAge" name="age" placeholder="猫の年齢" required
+								/> <br> <label for="newCatImage">画像を選んでください:</label> <input
+										type="file" id="newCatImage" name="image"
+								/> <br> <br>
+								<button type="submit">猫を追加する</button>
+						</form>
+						<!-- 猫情報を削除 -->
+						<form id="deleteForm">
+								<h2>猫情報を削除</h2>
+								<label for="deleteSelect">削除したい猫を選んでください:</label> <select
+										id="deleteSelect"
+								>
+										<!-- オプションは動的に追加されます -->
+								</select> <br>
+								<button type="submit">削除する</button>
+						</form>
+						<!-- 猫情報を検索 -->
+						<form id="searchForm">
+								<h2>猫情報の検索</h2>
+								<label for="catSelectSearch">猫を選んでください:</label> <select
+										id="catSelectSearch"
+								>
+										<!-- 猫の名前は動的に追加されます -->
+								</select> <br>
+						</form>
+						<!-- モーダルウィンドウ構造 -->
+						<div id="catInfoModal" style="display: none;">
+								<div id="modalContent">
+										<h3>猫情報</h3>
+										<p>
+												<strong>名前:</strong> <span id="modalCatName"></span>
+										</p>
+										<p>
+												<strong>性格:</strong> <span id="modalCatIntro"></span>
+										</p>
+										<p>
+												<strong>年齢:</strong> <span id="modalCatAge"></span>
+										</p>
+										<p>
+												<strong>好き数:</strong> <span id="modalLikesCount"></span>
+										</p>
+										<img id="modalCatImage" src="" alt="猫の画像"
+												style="max-width: 100%; height: auto;"
+										> <br>
+										<button id="closeModal">閉じる</button>
+								</div>
+						</div>
+				</div>
+				<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+				<script
+						src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ui.totop/1.0.0/jquery.ui.totop.min.js"
+				></script>
+				<script src="js/management.js"></script>
+</body>
 </html>
