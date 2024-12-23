@@ -45,4 +45,24 @@ public class CatInfoService {
 	public int deleteCatInfo(Long id) {
 		return catInfoDAO.deleteCatInfo(id);
 	}
+
+	// 分页查询猫的信息
+	public List<CatInfoMst> getCatInfoList(int offset, int pageSize) {
+		List<CatInfoMst> cats = catInfoDAO.findCatInfoWithPagination(pageSize, offset);
+
+		return cats;
+	}
+
+	// 查询总数
+	public int getTotalCatCount() {
+		return catInfoDAO.countCats();
+	}
+
+	public List<CatInfoMst> searchCats(String name, Integer age, int offset, int pageSize) {
+		return catInfoDAO.searchCats(name, age, offset, pageSize);
+	}
+
+	public int getTotalCatCountBySearch(String name, Integer age) {
+		return catInfoDAO.getTotalCatCountBySearch(name, age);
+	}
 }

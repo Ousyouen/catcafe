@@ -1,16 +1,16 @@
 package com.example.demo.model;
 
-public class CatInfoMst extends BaseModel {//共通クラスの継承
-	
+public class CatInfoMst extends BaseModel {// 共通クラスの継承
+
 	private String catName; // 猫の名前
 
 	private String catIntro; // 猫の紹介
-	
-	private int catAge;//猫の年齢
+
+	private int catAge;// 猫の年齢
 
 	private Integer likesCount; // 猫のいいね数
 
-	private Long osusumeFlg; // おすすめFLG  1：おすすめ  0：
+	private Long osusumeFlg; // おすすめFLG 1：おすすめ 0：
 
 	private String catImage; // 猫の画像URL
 

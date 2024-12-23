@@ -1,5 +1,6 @@
 package com.example.demo.controller.admin;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,10 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,39 +27,56 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.model.CatInfoMst;
 import com.example.demo.service.CatInfoService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/catManage")
 public class CatInfoManageController {
+
 	@Autowired
 	private CatInfoService catInfoService;
 
 	@GetMapping
 	public String catMagementIndex() {
-		return "catinfomanagement";// 返回猫咪管理页面
+		return "catinfomanagement"; // 猫の管理ページを返す
 	}
 
+//分页查询
+	@ResponseBody
 	@GetMapping("/api/cats")
-	@ResponseBody
-	public List<CatInfoMst> getAllCats() {
-		return catInfoService.getCatInfoList(); // 这里返回一个猫咪列表
+	public Map<String, Object> getAllCats(@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+
+		int offset = (page - 1) * pageSize;
+		List<CatInfoMst> cats = catInfoService.getCatInfoList(offset, pageSize);
+		int totalCats = catInfoService.getTotalCatCount();
+		int totalPages = (int) Math.ceil((double) totalCats / pageSize);
+
+		Map<String, Object> response = new HashMap<>();
+		response.put("cats", cats);
+		response.put("totalCats", totalCats);
+		response.put("totalPages", totalPages);
+		response.put("currentPage", page);
+
+		return response;
 	}
 
+//根据id查询
+	@ResponseBody
 	@GetMapping("/api/cat/{id}")
-	@ResponseBody
 	public CatInfoMst getCatInfoById(@PathVariable Long id) {
-		return catInfoService.getCatInfoById(id); // 通过ID获取猫咪信息
+		return catInfoService.getCatInfoById(id);
 	}
 
-	// 新增猫咪
+//新增猫咪
 	@PostMapping("/add")
 	@ResponseBody
 	public ResponseEntity<Map<String, String>> addCatInfo(@RequestParam("name") String name,
 			@RequestParam("personality") String personality, @RequestParam("age") Integer age,
-			@RequestParam(value = "image", required = false) MultipartFile image) {
-		// 检查表单是否填写完整
+			@RequestParam(value = "image", required = false) MultipartFile image, HttpServletRequest request) {
 		if (name == null || name.isEmpty() || personality == null || personality.isEmpty() || age == null) {
 			Map<String, String> response = new HashMap<>();
-			response.put("message", "请输入其他信息"); // 提示用户填写完整信息
+			response.put("message", "他の情報を入力してください");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 		}
 
@@ -69,42 +85,51 @@ public class CatInfoManageController {
 		catInfo.setCatIntro(personality);
 		catInfo.setCatAge(age);
 
-		// 图片上传处理
 		if (image != null && !image.isEmpty()) {
-			String imageName = image.getOriginalFilename();
-
-			// 生成唯一的文件名，避免文件冲突
-			String uniqueImageName = System.currentTimeMillis() + "_" + imageName;
-
 			try {
-				// 设置图片保存路径（项目的 static/images 目录下）
-				Path path = Paths.get(
-						"C:/Users/OuSyoen/Desktop/catcafe/catcafe/src/main/resources/static/images/" + uniqueImageName);
+				// 获取 ServletContext
+
+				// 修改图片保存的路径为相对路径
+				String uploadDir = "src/main/resources/static/images/";
+
+				// 确保目标文件夹存在
+				File directory = new File(uploadDir);
+				if (!directory.exists()) {
+					directory.mkdirs();
+				}
+
+				// 获取现有文件数目
+				File[] files = directory.listFiles();
+				int nextImageNumber = files != null ? files.length + 1 : 1; // 确保下一个图片的编号
+
+				// 构建新的图片文件名，确保命名规律
+				String uniqueImageName = "catImage" + nextImageNumber + ".jpg";
+
+				// 构建保存路径
+				Path path = Paths.get(uploadDir + File.separator + uniqueImageName);
 				Files.write(path, image.getBytes());
 
-				// 保存图片的相对路径（用于前端显示）
-				catInfo.setCatImage("images/" + uniqueImageName); // 注意，这里保存的是图片相对路径
+				// 设置相对路径
+				catInfo.setCatImage("images/" + uniqueImageName);
+
 			} catch (IOException e) {
 				e.printStackTrace();
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-						.body(Collections.singletonMap("message", "图片上传失败"));
+						.body(Collections.singletonMap("message", "画像のアップロードに失敗しました"));
 			}
 		}
 
-		// 调用 Service 层保存数据
 		int result = catInfoService.addCatInfo(catInfo);
 		Map<String, String> response = new HashMap<>();
-
-		// 根据保存结果返回不同的响应
 		if (result > 0) {
-			response.put("message", "猫咪信息新增成功");
+			response.put("message", "猫の情報が追加されました");
 			if (catInfo.getCatImage() != null) {
-				response.put("imagePath", catInfo.getCatImage()); // 返回图片的路径给前端
+				response.put("imagePath", catInfo.getCatImage());
 			}
-			return ResponseEntity.ok(response); // 返回成功消息
+			return ResponseEntity.ok(response);
 		} else {
-			response.put("message", "猫咪信息新增失败");
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response); // 返回失败消息
+			response.put("message", "猫の情報の追加に失敗しました");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 		}
 	}
 
@@ -121,47 +146,66 @@ public class CatInfoManageController {
 		catInfo.setCatIntro(personality);
 		catInfo.setCatAge(age);
 
-		// 如果图片被更改，保存新图片
 		if (image != null && !image.isEmpty()) {
-			String imageName = image.getOriginalFilename();
+			String imageName = "catImage" + System.currentTimeMillis() + ".jpg"; // 确保图片文件名规律
 			try {
-				// 保存新图片
-				Path path = Paths
-						.get("C:/Users/OuSyoen/Desktop/catcafe/catcafe/src/main/resources/static/images/" + imageName);
+				// 获取相对路径
+				Path path = Paths.get("src/main/resources/static/images/" + imageName);
 				Files.write(path, image.getBytes());
-				catInfo.setCatImage("images/" + imageName); // 更新猫咪图片路径
+				catInfo.setCatImage("images/" + imageName);
 			} catch (IOException e) {
 				e.printStackTrace();
-				response.put("message", "图片上传失败");
-				return response; // 返回上传失败的消息
+				response.put("message", "画像のアップロードに失敗しました");
+				return response;
 			}
 		} else {
-			// 如果没有上传新图片，保持原来的图片路径不变
+			// 如果图片为空，保留原来的图片路径
 			CatInfoMst existingCat = catInfoService.getCatInfoById(id);
-			catInfo.setCatImage(existingCat.getCatImage()); // 保持原图片路径
+			catInfo.setCatImage(existingCat.getCatImage());
 		}
 
-		// 调用 Service 层更新数据
 		int result = catInfoService.updateCatInfo(catInfo);
 		if (result > 0) {
-			response.put("message", "猫咪信息更新成功");
+			response.put("message", "猫の情報が更新されました");
 		} else {
-			response.put("message", "猫咪信息更新失败");
+			response.put("message", "猫の情報の更新に失敗しました");
 		}
 		return response;
 	}
 
-//删除猫咪
+//删除猫咪，把deleteCatInfo设置为1
 	@DeleteMapping("/delete/{id}")
 	@ResponseBody
 	public Map<String, String> deleteCatInfo(@PathVariable Long id) {
 		Map<String, String> response = new HashMap<>();
 		int result = catInfoService.deleteCatInfo(id);
 		if (result > 0) {
-			response.put("message", "猫咪信息删除成功");
+			response.put("message", "猫の情報が削除されました");
 		} else {
-			response.put("message", "猫咪信息删除失败");
+			response.put("message", "猫の情報の削除に失敗しました");
 		}
 		return response;
 	}
+
+	// 根据名字和年龄进行查询猫咪
+	@ResponseBody
+	@GetMapping("/api/searchCats")
+	public Map<String, Object> searchCats(@RequestParam(value = "name", required = false) String name,
+			@RequestParam(value = "age", required = false) Integer age,
+			@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+		int offset = (page - 1) * pageSize;
+		List<CatInfoMst> cats = catInfoService.searchCats(name, age, offset, pageSize);
+		int totalCats = catInfoService.getTotalCatCountBySearch(name, age);
+		int totalPages = (int) Math.ceil((double) totalCats / pageSize);
+
+		Map<String, Object> response = new HashMap<>();
+		response.put("cats", cats);
+		response.put("totalCats", totalCats);
+		response.put("totalPages", totalPages);
+		response.put("currentPage", page);
+
+		return response;
+	}
+
 }
