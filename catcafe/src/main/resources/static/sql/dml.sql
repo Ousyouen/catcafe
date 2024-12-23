@@ -10,3 +10,8 @@ INSERT INTO cat_info (id, cat_name, cat_intro, cat_age, likes_count, osusume_flg
 INSERT INTO cat_info (id, cat_name, cat_intro, cat_age, likes_count, osusume_flg, cat_image, delete_flag, update_time) VALUES ('10', 'クロコ', '落ち着いていて、静かな時間を過ごすのが好きです。', 5, 586, 0, 'images/g10.jpg', 0, '2024-12-20 18:47:18');
 INSERT INTO cat_info (id, cat_name, cat_intro, cat_age, likes_count, osusume_flg, cat_image, delete_flag, update_time) VALUES ('11', 'ミント', 'とても好奇心旺盛で、何でも調べるのが大好きです。', 3, 854, 0, 'images/g11.jpg', 0, '2024-12-20 18:47:18');
 INSERT INTO cat_info (id, cat_name, cat_intro, cat_age, likes_count, osusume_flg, cat_image, delete_flag, update_time) VALUES ('12', 'ルナ', '静かでおとなしい性格で、日向ぼっこをしているのが好きです。', 3, 368, 0, 'images/g12.jpg', 0, '2024-12-20 18:47:18');
+
+
+INSERT INTO catcafe.tab_user (id, name, email, password, phone, create_time, update_time, del_flag) VALUES (10, '王二麻子', '13972244571@163.com', '123', '15555566000', '2024-12-23 20:50:04', '2024-12-23 20:50:04', 0);
+INSERT INTO catcafe.tab_user (id, name, email, password, phone, create_time, update_time, del_flag) VALUES (13, '王二麻子1', '13972244571@163.com', '123', '15555566000', '2024-12-23 20:55:11', '2024-12-23 20:55:11', 0);
+INSERT INTO catcafe.tab_user (id, name, email, password, phone, create_time, update_time, del_flag) VALUES (14, '王二麻子2', '13972244571@163.com', '123', '15555566000', '2024-12-23 20:55:29', '2024-12-23 20:55:29', 0);
