@@ -23,8 +23,5 @@ public class CatInfoController {
 		model.addAttribute("cats", cats);// 猫の情報をモデルに追加
 		return "cats"; // ビュー名を返す（ビュー解析器がこの名前に対応するページを探します）
 	}
-	@GetMapping("/admin")
-	public String getAdmin() {
-		return "admin_kanri";
-	}
+
 }

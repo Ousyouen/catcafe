@@ -9,17 +9,17 @@
 >
 <link rel="stylesheet" href="css/admin-style.css">
 <link rel="stylesheet" href="css/management-style.css">
-<!-- 引入猫信息管理页面的CSS -->
+<!-- 猫情報管理ページのCSSを読み込む -->
 <style>
-/* 保留你原来的样式 */
+/* 元のスタイルを保持 */
 </style>
 </head>
 <body>
-		<!-- Header -->
+		<!-- ヘッダー -->
 		<header>
 				<h1>猫カフェ管理画面</h1>
 		</header>
-		<!-- Navigation -->
+		<!-- ナビゲーション -->
 		<nav>
 				<ul>
 						<li><a href="/">ホームページ</a></li>
@@ -29,9 +29,9 @@
 						<li><a href="/about">について</a></li>
 				</ul>
 		</nav>
-		<!-- Main Container -->
+		<!-- メインコンテナ -->
 		<div class="container">
-				<!-- Sidebar -->
+				<!-- サイドバー -->
 				<div class="sidebar">
 						<ul>
 								<li><a href="/homepage/admin/edit">ホームページ管理</a></li>
@@ -39,9 +39,9 @@
 								<li><a href="/catManage">猫情報管理</a></li>
 						</ul>
 				</div>
-				<!-- Content Area -->
+				<!-- コンテンツエリア -->
 				<div class="content">
-						<!-- 查询区域 -->
+						<!-- 検索エリア -->
 						<div class="search-section">
 								<h2>猫情報の検索</h2>
 								<form id="searchForm">
@@ -53,11 +53,11 @@
 										<button type="submit">検索</button>
 								</form>
 						</div>
-						<!-- 添加猫咪按钮 -->
+						<!-- 猫を追加するボタン -->
 						<div class="add-button">
 								<button id="addCatButton">新しい猫を追加</button>
 						</div>
-						<!-- 添加猫咪模态框 -->
+						<!-- 猫を追加するモーダル -->
 						<div id="addCatModal" class="modal">
 								<div class="modal-content">
 										<span id="closeAddCatModal" class="close">&times;</span>
@@ -76,7 +76,7 @@
 										</form>
 								</div>
 						</div>
-						<!-- 猫咪列表 -->
+						<!-- 猫のリスト -->
 						<div class="cat-list">
 								<h2>猫情報リスト</h2>
 								<table id="catListTable">
@@ -92,17 +92,17 @@
 												</tr>
 										</thead>
 										<tbody id="catListBody">
-												<!-- 猫咪信息条目，动态加载 -->
+												<!-- 猫情報項目、動的に読み込む -->
 										</tbody>
 								</table>
-								<!-- 分页 -->
+								<!-- ページネーション -->
 								<div id="pagination">
 										<button id="prevPage">前へ</button>
 										<span id="currentPage">1</span> / <span id="totalPages">1</span>
 										<button id="nextPage">次へ</button>
 								</div>
 						</div>
-						<!-- 编辑猫咪信息模态框 -->
+						<!-- 猫情報編集モーダル -->
 						<div id="editCatModal" class="modal">
 								<div class="modal-content">
 										<span id="closeEditCatModal" class="close">&times;</span>
@@ -123,7 +123,7 @@
 										</form>
 								</div>
 						</div>
-						<!-- 猫咪详情模态框 -->
+						<!-- 猫の詳細モーダル -->
 						<div id="catInfoModal" style="display: none;">
 								<div id="modalContent">
 										<h3>猫情報</h3>
@@ -147,7 +147,7 @@
 						</div>
 				</div>
 		</div>
-		<!-- Footer -->
+		<!-- フッター -->
 		<footer>
 				<p>&copy; 2024 猫カフェ管理画面. 全著作権所有.</p>
 		</footer>

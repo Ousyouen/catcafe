@@ -14,7 +14,7 @@ public class CatInfoService {
 	@Autowired
 	private CatInfoDAO catInfoDAO;
 
-	// すべての猫の情報を取得（削除されていない猫のみ）
+	// 削除されていないすべての猫情報を取得
 	public List<CatInfoMst> getCatInfoList() {
 		return catInfoDAO.findCatInfo();
 	}
@@ -24,7 +24,7 @@ public class CatInfoService {
 		return catInfoDAO.findCatInfoById(id);
 	}
 
-	// 新しい猫の情報を追加
+	// 新しい猫情報を追加
 	@Transactional
 	public int addCatInfo(CatInfoMst catInfo) {
 		// ここで追加のビジネスロジックを追加できます
@@ -46,22 +46,24 @@ public class CatInfoService {
 		return catInfoDAO.deleteCatInfo(id);
 	}
 
-	// 分页查询猫的信息
+	// ページネーション付きで猫情報を取得
 	public List<CatInfoMst> getCatInfoList(int offset, int pageSize) {
 		List<CatInfoMst> cats = catInfoDAO.findCatInfoWithPagination(pageSize, offset);
 
 		return cats;
 	}
 
-	// 查询总数
+	// 猫の総数を取得
 	public int getTotalCatCount() {
 		return catInfoDAO.countCats();
 	}
 
+	// 名前と年齢で猫情報を検索
 	public List<CatInfoMst> searchCats(String name, Integer age, int offset, int pageSize) {
 		return catInfoDAO.searchCats(name, age, offset, pageSize);
 	}
 
+	// 名前と年齢での検索結果の総数を取得
 	public int getTotalCatCountBySearch(String name, Integer age) {
 		return catInfoDAO.getTotalCatCountBySearch(name, age);
 	}

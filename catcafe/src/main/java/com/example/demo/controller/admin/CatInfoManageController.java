@@ -41,7 +41,7 @@ public class CatInfoManageController {
 		return "catinfomanagement"; // 猫の管理ページを返す
 	}
 
-//分页查询
+	// ページネーション付きで猫情報を取得
 	@ResponseBody
 	@GetMapping("/api/cats")
 	public Map<String, Object> getAllCats(@RequestParam(value = "page", defaultValue = "1") int page,
@@ -61,14 +61,14 @@ public class CatInfoManageController {
 		return response;
 	}
 
-//根据id查询
+	// IDで猫情報を取得
 	@ResponseBody
 	@GetMapping("/api/cat/{id}")
 	public CatInfoMst getCatInfoById(@PathVariable Long id) {
 		return catInfoService.getCatInfoById(id);
 	}
 
-//新增猫咪
+	// 新しい猫情報を追加
 	@PostMapping("/add")
 	@ResponseBody
 	public ResponseEntity<Map<String, String>> addCatInfo(@RequestParam("name") String name,
@@ -87,29 +87,29 @@ public class CatInfoManageController {
 
 		if (image != null && !image.isEmpty()) {
 			try {
-				// 获取 ServletContext
+				// ServletContextを取得
 
-				// 修改图片保存的路径为相对路径
+				// 画像の保存パスを相対パスに変更
 				String uploadDir = "src/main/resources/static/images/";
 
-				// 确保目标文件夹存在
+				// 画像を保存するフォルダが存在しない場合、作成
 				File directory = new File(uploadDir);
 				if (!directory.exists()) {
 					directory.mkdirs();
 				}
 
-				// 获取现有文件数目
+				// 現在のファイル数を取得
 				File[] files = directory.listFiles();
-				int nextImageNumber = files != null ? files.length + 1 : 1; // 确保下一个图片的编号
+				int nextImageNumber = files != null ? files.length + 1 : 1; // 次の画像番号を確保
 
-				// 构建新的图片文件名，确保命名规律
+				// 新しい画像のファイル名を作成
 				String uniqueImageName = "catImage" + nextImageNumber + ".jpg";
 
-				// 构建保存路径
+				// 保存パスを作成
 				Path path = Paths.get(uploadDir + File.separator + uniqueImageName);
 				Files.write(path, image.getBytes());
 
-				// 设置相对路径
+				// 相対パスを設定
 				catInfo.setCatImage("images/" + uniqueImageName);
 
 			} catch (IOException e) {
@@ -133,7 +133,7 @@ public class CatInfoManageController {
 		}
 	}
 
-//更新猫咪信息
+	// 猫情報の更新
 	@PutMapping("/update")
 	@ResponseBody
 	public Map<String, String> updateCatInfo(@RequestParam("id") Long id, @RequestParam("name") String name,
@@ -147,9 +147,9 @@ public class CatInfoManageController {
 		catInfo.setCatAge(age);
 
 		if (image != null && !image.isEmpty()) {
-			String imageName = "catImage" + System.currentTimeMillis() + ".jpg"; // 确保图片文件名规律
+			String imageName = "catImage" + System.currentTimeMillis() + ".jpg"; // 画像のファイル名を規則的に設定
 			try {
-				// 获取相对路径
+				// 相対パスを取得
 				Path path = Paths.get("src/main/resources/static/images/" + imageName);
 				Files.write(path, image.getBytes());
 				catInfo.setCatImage("images/" + imageName);
@@ -159,7 +159,7 @@ public class CatInfoManageController {
 				return response;
 			}
 		} else {
-			// 如果图片为空，保留原来的图片路径
+			// 画像が空の場合、元の画像パスを保持
 			CatInfoMst existingCat = catInfoService.getCatInfoById(id);
 			catInfo.setCatImage(existingCat.getCatImage());
 		}
@@ -173,7 +173,7 @@ public class CatInfoManageController {
 		return response;
 	}
 
-//删除猫咪，把deleteCatInfo设置为1
+	// 猫情報を削除（deleteCatInfoを1に設定）
 	@DeleteMapping("/delete/{id}")
 	@ResponseBody
 	public Map<String, String> deleteCatInfo(@PathVariable Long id) {
@@ -187,7 +187,7 @@ public class CatInfoManageController {
 		return response;
 	}
 
-	// 根据名字和年龄进行查询猫咪
+	// 名前と年齢で猫情報を検索
 	@ResponseBody
 	@GetMapping("/api/searchCats")
 	public Map<String, Object> searchCats(@RequestParam(value = "name", required = false) String name,
