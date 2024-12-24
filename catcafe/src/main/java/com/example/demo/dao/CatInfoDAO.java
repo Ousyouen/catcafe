@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface CatInfoDAO {
-	// 猫情報を検索する（削除されていない猫のみ）
+	// 削除されていない猫情報を検索
 	@Select("SELECT * FROM cat_info WHERE delete_flag = 0")
 	List<CatInfoMst> findCatInfo();
 
@@ -32,24 +32,27 @@ public interface CatInfoDAO {
 	@Update("UPDATE cat_info SET delete_flag = 1 WHERE id = #{id}")
 	int deleteCatInfo(Long id);
 
-	// ページネーション付きで猫情報を検索する
+	// ページネーション付きで猫情報を検索
 	@Select("SELECT * FROM cat_info WHERE delete_flag = 0 LIMIT #{pageSize} OFFSET #{offset}")
 	List<CatInfoMst> findCatInfoWithPagination(@Param("pageSize") int pageSize, @Param("offset") int offset);
 
-	// 猫の総数を取得する
+	// 猫の総数を取得
 	@Select("SELECT COUNT(*) FROM cat_info WHERE delete_flag = 0")
 	int countCats();
 
-	// 条件に基づいて猫情報を検索する
-	@Select("<script>" + "SELECT * FROM cat_info_mst " + "WHERE 1=1 " + "<if test='name != null and name != \"\"'>"
-			+ "  AND cat_name LIKE CONCAT('%', #{name}, '%') " + "</if>" + "<if test='age != null'>"
-			+ "  AND cat_age = #{age} " + "</if>" + "LIMIT #{offset}, #{pageSize}" + "</script>")
-	List<CatInfoMst> searchCats(@Param("name") String name, @Param("age") Integer age, @Param("offset") int offset,
-			@Param("pageSize") int pageSize);
+	// 名前と年齢で検索
+	@Select("SELECT * FROM cat_info WHERE cat_name = #{name} AND cat_age = #{age}")
+	List<CatInfoMst> searchCatsByNameAndAge(@Param("name") String name, @Param("age") Integer age);
 
-	// 条件に一致する猫の数を取得する（ページネーション用）
-	@Select("<script>" + "SELECT COUNT(*) FROM cat_info " + "WHERE 1=1 " + "<if test='name != null and name != \"\"'>"
-			+ "  AND cat_name LIKE CONCAT('%', #{name}, '%') " + "</if>" + "<if test='age != null'>"
-			+ "  AND cat_age = #{age} " + "</if>" + "</script>")
-	int getTotalCatCountBySearch(@Param("name") String name, @Param("age") Integer age);
+	// 名前で検索
+	@Select("SELECT * FROM cat_info WHERE cat_name = #{name}")
+	List<CatInfoMst> searchCatsByName(@Param("name") String name);
+
+	// 年齢で検索
+	@Select("SELECT * FROM cat_info WHERE cat_age = #{age}")
+	List<CatInfoMst> searchCatsByAge(@Param("age") Integer age);
+
+	// すべての猫情報を取得
+	@Select("SELECT * FROM cat_info")
+	List<CatInfoMst> getAllCats();
 }

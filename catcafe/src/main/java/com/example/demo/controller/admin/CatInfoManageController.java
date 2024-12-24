@@ -36,6 +36,7 @@ public class CatInfoManageController {
 	@Autowired
 	private CatInfoService catInfoService;
 
+	// 猫の管理ページを返す
 	@GetMapping
 	public String catMagementIndex() {
 		return "catinfomanagement"; // 猫の管理ページを返す
@@ -85,6 +86,7 @@ public class CatInfoManageController {
 		catInfo.setCatIntro(personality);
 		catInfo.setCatAge(age);
 
+		// 画像がある場合、アップロード処理を実行
 		if (image != null && !image.isEmpty()) {
 			try {
 				// 画像の保存パスを相対パスに変更
@@ -117,6 +119,7 @@ public class CatInfoManageController {
 			}
 		}
 
+		// 猫情報の追加
 		int result = catInfoService.addCatInfo(catInfo);
 		Map<String, String> response = new HashMap<>();
 		if (result > 0) {
@@ -144,7 +147,7 @@ public class CatInfoManageController {
 		catInfo.setCatIntro(personality);
 		catInfo.setCatAge(age);
 
-		// 检查图片是否上传
+		// 画像がある場合、アップロード処理を実行
 		if (image != null && !image.isEmpty()) {
 			String imageName = "catImage" + System.currentTimeMillis() + ".jpg"; // 生成唯一图片文件名
 			try {
@@ -157,12 +160,12 @@ public class CatInfoManageController {
 				return response;
 			}
 		} else {
-			// 如果没有新的图片，保持原来的图片路径
+			// もし新しい画像がなければ、既存の画像パスを保持
 			CatInfoMst existingCat = catInfoService.getCatInfoById(id);
 			catInfo.setCatImage(existingCat.getCatImage());
 		}
 
-		// 更新猫信息
+		// 猫情報を更新
 		int result = catInfoService.updateCatInfo(catInfo);
 
 		if (result > 0) {
@@ -171,8 +174,8 @@ public class CatInfoManageController {
 			response.put("message", "猫の情報の更新に失敗しました");
 		}
 
-		// Log the result
-		System.out.println("Update Result: " + result); // Log to console
+		// 結果をログに記録
+		System.out.println("Update Result: " + result); // コンソールにログを出力
 
 		return response;
 	}
@@ -191,25 +194,15 @@ public class CatInfoManageController {
 		return response;
 	}
 
-	// 名前と年齢で猫情報を検索
-	@ResponseBody
-	@GetMapping("/api/searchCats")
-	public Map<String, Object> searchCats(@RequestParam(value = "name", required = false) String name,
-			@RequestParam(value = "age", required = false) Integer age,
-			@RequestParam(value = "page", defaultValue = "1") int page,
-			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
-		int offset = (page - 1) * pageSize;
-		List<CatInfoMst> cats = catInfoService.searchCats(name, age, offset, pageSize);
-		int totalCats = catInfoService.getTotalCatCountBySearch(name, age);
-		int totalPages = (int) Math.ceil((double) totalCats / pageSize);
+	// 猫情報検索のAPI
+	@GetMapping("/search/api/cats")
+	public ResponseEntity<Map<String, Object>> searchCats(@RequestParam(required = false) String name,
+			@RequestParam(required = false) Integer age) {
+		List<CatInfoMst> cats = catInfoService.searchCats(name, age);
 
+		// JSON形式でレスポンスを返す
 		Map<String, Object> response = new HashMap<>();
-		response.put("cats", cats);
-		response.put("totalCats", totalCats);
-		response.put("totalPages", totalPages);
-		response.put("currentPage", page);
-
-		return response;
+		response.put("cats", cats); // 猫の情報をそのまま返す
+		return ResponseEntity.ok(response);
 	}
-
 }
