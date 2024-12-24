@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ui-to-top@1.0.1/jquery.ui.totop.min.js"></script>
+</head>
+<body>
+<div th:replace="~{header}"></div>
+<!--gallery-->
+<div class="gallery services">
+    <div class="container">
+        <div class="port-head">
+            <h3>菜单信息</h3>
+            <p>这里展示菜单信息</p>
+        </div>
+        <div class="cats-bottom">
+            <div class="gallery-one two">
+                <div class="row">
+                    <div th:each="menu : ${menuInfos}" class="col-md-3 gallery-left">
+                        <a th:href="@{${menu.menuImage}}" class="mask b-link-stripe b-animate-go swipebox" th:title="${menu.menuName}" >
+                            <img th:src="@{${menu.menuImage}}" alt=""  class="img-responsive zoom-img" />
+                        </a>
+                        <div class="cat-info">
+                            <p>
+                                菜单：<span th:text="${menu.menuName}"></span>
+                            </p>
+                            <p>
+                                单价：<span th:text="${menu.price}"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--swipebox -->
+<link rel="stylesheet" href="css/swipebox.css">
+<script src="js/jquery.swipebox.min.js"></script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $(".swipebox").swipebox();
+    });
+</script>
+<!--//swipebox Ends -->
+<!----family--->
+<div class="c-family">
+    <div class="container">
+        <div class="family-top">
+            <h3>家族の一員としての猫 !!</h3>
+            <p>
+                私たちの猫の大家族は、愛らしい猫たちがたくさん集まった楽しい場所です。各々の猫は独自の性格を持ち、時にはお互いにいたずらをしたり、静かに寄り添ったりしています。猫たちの多様性が魅力で、どの猫も家族の一員として大切にされています。この家族の一員として、毎日が新しい発見と喜びに満ちています。猫たちと一緒に過ごす時間は、心温まるひとときです。
+            </p>
+            <a class="read two" href="#">もっと見る</a>
+        </div>
+    </div>
+</div>
+<!---- footer --->
+<div th:replace="~{footer}"></div>
+<!-- スムーズスクロール -->
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
+        });
+    });
+</script>
+<!-- 上に戻るボタン -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+    });
+</script>
+<a href="#home" id="toTop" class="scroll" style="display: block;"> <span
+        id="toTopHover" style="opacity: 1;"
+> </span>
+</a>
+<script>
+    $(document).ready(function () {
+        $("html, body").UItoTop(); // 初始化插件
+    });
+</script>
+</body>
+</html>

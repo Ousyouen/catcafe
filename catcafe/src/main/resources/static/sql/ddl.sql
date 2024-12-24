@@ -38,7 +38,6 @@ create table tab_user
 ) comment '用户表';
 ALTER TABLE cat_info
 ADD COLUMN cat_age TINYINT AFTER cat_intro;
-<<<<<<< HEAD
 
 CREATE TABLE about_info (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,             -- 主キー、自動増加
@@ -56,5 +55,15 @@ CREATE TABLE about_info (
     update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- 更新日時
 );
 
-
+drop table if exists menu_info;
+CREATE TABLE menu_info
+(
+    id          BIGINT AUTO_INCREMENT PRIMARY KEY comment '主键',
+    menu_name   VARCHAR(255) NOT NULL comment '菜单名称',
+    menu_desc   TEXT comment '菜单介绍',
+    price       INT comment '价格',
+    menu_image  VARCHAR(255) comment '图片',
+    delete_flag TINYINT   DEFAULT 0 comment '删除标志，0 表示未删除，1 表示已删除',
+    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间，自动更新'
+) default charset 'utf8mb4' comment '菜单信息表';
 
