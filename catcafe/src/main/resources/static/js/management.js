@@ -1,5 +1,7 @@
 $(document).ready(function() {
-	// 初始加载第一页猫咪信息
+	let updateSuccess = false;  // 新增一个状态变量，确保更新成功只提示一次
+
+	// 初次页面加载时，加载猫咪信息列表
 	loadCatList(1);
 
 	// 搜索功能
@@ -30,7 +32,7 @@ $(document).ready(function() {
 		addCatInfo(name, intro, age, image);
 	});
 
-	// 加载猫咪信息列表，分页处理
+	// 加载猫咪列表并进行分页
 	function loadCatList(page) {
 		fetch(`/catManage/api/cats?page=${page}&pageSize=4`)
 			.then(response => response.json())
@@ -41,7 +43,7 @@ $(document).ready(function() {
 				tableBody.empty();
 
 				if (cats.length === 0) {
-					tableBody.append('<tr><td colspan="6">猫咪信息为空。</td></tr>');
+					tableBody.append('<tr><td colspan="6">猫の情報はありません。</td></tr>');
 				} else {
 					cats.forEach(cat => {
 						const row = `
@@ -50,15 +52,15 @@ $(document).ready(function() {
                                 <td>${cat.catIntro}</td>
                                 <td>${cat.catAge}</td>
                                 <td>${cat.likesCount}</td>
-                                <td><button class="viewCat" data-id="${cat.id}">详情</button></td>
-                                <td><button class="editCat" data-id="${cat.id}">编辑</button></td>
-                                <td><button class="deleteCat" data-id="${cat.id}">删除</button></td>
+                                <td><button class="viewCat" data-id="${cat.id}">詳細</button></td>
+                                <td><button class="editCat" data-id="${cat.id}">編集</button></td>
+                                <td><button class="deleteCat" data-id="${cat.id}">削除</button></td>
                             </tr>
                         `;
 						tableBody.append(row);
 					});
 
-					// 分页逻辑
+					// 页面分页逻辑
 					$('#currentPage').text(data.currentPage);
 					$('#totalPages').text(totalPages);
 					$('#prevPage').prop('disabled', data.currentPage === 1);
@@ -76,12 +78,14 @@ $(document).ready(function() {
 						}
 					});
 
-					// 编辑按钮
+					// 编辑按钮点击事件
 					$('.editCat').click(function() {
 						const catId = $(this).data('id');
 						fetch(`/catManage/api/cat/${catId}`)
 							.then(response => response.json())
 							.then(data => {
+								// 填充编辑表单
+								$('#editCatId').val(data.id);
 								$('#editCatName').val(data.catName);
 								$('#editCatIntro').val(data.catIntro);
 								$('#editCatAge').val(data.catAge);
@@ -90,15 +94,64 @@ $(document).ready(function() {
 							});
 					});
 
-					// 删除按钮
+					// 更新猫咪信息
+					$('#submitEditCatForm').click(function() {
+						const id = $('#editCatId').val();
+						if (!id) {
+							alert('猫のIDが見つかりません');
+							return;
+						}
+
+						const name = $('#editCatName').val();
+						const intro = $('#editCatIntro').val();
+						const age = $('#editCatAge').val();
+						const image = $('#editCatImage')[0].files[0];
+
+						// 禁用按钮以防止重复提交
+						$(this).prop('disabled', true);
+
+						const formData = new FormData();
+						formData.append('id', id);
+						formData.append('name', name);
+						formData.append('personality', intro);
+						formData.append('age', age);
+						if (image) formData.append('image', image);
+
+						fetch('/catManage/update', {
+							method: 'PUT',
+							body: formData
+						})
+							.then(response => response.json())
+							.then(data => {
+								if (!updateSuccess) {  // 如果未弹出提示框
+									alert(data.message);  // 显示更新成功的提示
+									updateSuccess = true;  // 设置为已弹过提示框
+								}
+
+								if (data.message === '猫の情報が更新されました') {
+									$('#editCatModal').fadeOut(300);  // 关闭编辑模态框
+									loadCatList(1);  // 更新猫咪列表
+								}
+							})
+							.catch(error => {
+								console.error('更新时发生错误:', error);
+								alert('猫情報の更新に失敗しました');
+							})
+							.finally(() => {
+								// 请求完成后重新启用按钮
+								$('#submitEditCatForm').prop('disabled', false);
+							});
+					});
+
+					// 删除按钮点击事件
 					$('.deleteCat').click(function() {
 						const catId = $(this).data('id');
-						if (confirm("确定删除这个猫咪吗？")) {
+						if (confirm("本当にこの猫を削除しますか？")) {
 							deleteCatInfo(catId);
 						}
 					});
 
-					// 查看详细信息按钮
+					// 查看猫咪详细信息
 					$('.viewCat').click(function() {
 						const catId = $(this).data('id');
 						viewCatDetails(catId);
@@ -107,7 +160,7 @@ $(document).ready(function() {
 			});
 	}
 
-	// 搜索猫咪信息
+	// 搜索猫咪
 	function searchCats(name, age) {
 		const searchParams = new URLSearchParams();
 		if (name) searchParams.append('name', name);
@@ -121,7 +174,7 @@ $(document).ready(function() {
 				tableBody.empty();
 
 				if (cats.length === 0) {
-					tableBody.append('<tr><td colspan="6">没有找到匹配的猫咪。</td></tr>');
+					tableBody.append('<tr><td colspan="6">一致する猫は見つかりませんでした。</td></tr>');
 				} else {
 					cats.forEach(cat => {
 						const row = `
@@ -130,9 +183,9 @@ $(document).ready(function() {
                                 <td>${cat.catIntro}</td>
                                 <td>${cat.catAge}</td>
                                 <td>${cat.likesCount}</td>
-                                <td><button class="viewCat" data-id="${cat.id}">详情</button></td>
-                                <td><button class="editCat" data-id="${cat.id}">编辑</button></td>
-                                <td><button class="deleteCat" data-id="${cat.id}">删除</button></td>
+                                <td><button class="viewCat" data-id="${cat.id}">詳細</button></td>
+                                <td><button class="editCat" data-id="${cat.id}">編集</button></td>
+                                <td><button class="deleteCat" data-id="${cat.id}">削除</button></td>
                             </tr>
                         `;
 						tableBody.append(row);
@@ -140,7 +193,7 @@ $(document).ready(function() {
 				}
 			})
 			.catch(error => {
-				alert("搜索时发生错误");
+				alert("検索中にエラーが発生しました");
 				console.error(error);
 			});
 	}
@@ -160,13 +213,13 @@ $(document).ready(function() {
 			.then(response => response.json())
 			.then(data => {
 				alert(data.message);
-				if (data.message === '猫咪信息添加成功') {
+				if (data.message === '猫の情報が追加されました') {
 					$('#addCatModal').fadeOut(300);
 					loadCatList(1);
 				}
 			})
 			.catch(error => {
-				alert("添加猫咪信息时发生错误");
+				alert("猫の情報追加中にエラーが発生しました");
 				console.error(error);
 			});
 	}
@@ -182,12 +235,12 @@ $(document).ready(function() {
 				loadCatList(1);
 			})
 			.catch(error => {
-				alert("删除猫咪信息时发生错误");
+				alert("猫の情報削除中にエラーが発生しました");
 				console.error(error);
 			});
 	}
 
-	// 查看猫咪详情
+	// 查看猫咪详细信息
 	function viewCatDetails(id) {
 		fetch(`/catManage/api/cat/${id}`)
 			.then(response => response.json())
@@ -200,12 +253,12 @@ $(document).ready(function() {
 				$('#catInfoModal').show();
 			})
 			.catch(error => {
-				alert("获取猫咪信息失败");
+				alert("猫の情報を取得できませんでした");
 				console.error(error);
 			});
 	}
 
-	// 关闭猫咪信息详情模态框
+	// 关闭猫咪信息模态框
 	$('#closeModal').click(function() {
 		$('#catInfoModal').hide();
 	});

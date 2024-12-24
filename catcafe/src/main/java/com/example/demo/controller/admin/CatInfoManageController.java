@@ -87,8 +87,6 @@ public class CatInfoManageController {
 
 		if (image != null && !image.isEmpty()) {
 			try {
-				// ServletContextを取得
-
 				// 画像の保存パスを相対パスに変更
 				String uploadDir = "src/main/resources/static/images/";
 
@@ -133,7 +131,7 @@ public class CatInfoManageController {
 		}
 	}
 
-	// 猫情報の更新
+	// 猫情報の編集
 	@PutMapping("/update")
 	@ResponseBody
 	public Map<String, String> updateCatInfo(@RequestParam("id") Long id, @RequestParam("name") String name,
@@ -146,30 +144,36 @@ public class CatInfoManageController {
 		catInfo.setCatIntro(personality);
 		catInfo.setCatAge(age);
 
+		// 检查图片是否上传
 		if (image != null && !image.isEmpty()) {
-			String imageName = "catImage" + System.currentTimeMillis() + ".jpg"; // 画像のファイル名を規則的に設定
+			String imageName = "catImage" + System.currentTimeMillis() + ".jpg"; // 生成唯一图片文件名
 			try {
-				// 相対パスを取得
 				Path path = Paths.get("src/main/resources/static/images/" + imageName);
 				Files.write(path, image.getBytes());
-				catInfo.setCatImage("images/" + imageName);
+				catInfo.setCatImage("images/" + imageName); // 设置相对路径
 			} catch (IOException e) {
 				e.printStackTrace();
 				response.put("message", "画像のアップロードに失敗しました");
 				return response;
 			}
 		} else {
-			// 画像が空の場合、元の画像パスを保持
+			// 如果没有新的图片，保持原来的图片路径
 			CatInfoMst existingCat = catInfoService.getCatInfoById(id);
 			catInfo.setCatImage(existingCat.getCatImage());
 		}
 
+		// 更新猫信息
 		int result = catInfoService.updateCatInfo(catInfo);
+
 		if (result > 0) {
 			response.put("message", "猫の情報が更新されました");
 		} else {
 			response.put("message", "猫の情報の更新に失敗しました");
 		}
+
+		// Log the result
+		System.out.println("Update Result: " + result); // Log to console
+
 		return response;
 	}
 
