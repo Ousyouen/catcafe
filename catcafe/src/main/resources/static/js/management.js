@@ -111,16 +111,16 @@ $(document).ready(function() {
 					$('#prevPage').prop('disabled', data.currentPage === 1);
 					$('#nextPage').prop('disabled', data.currentPage === totalPages);
 
-					$('#prevPage').click(function() {
-						if (data.currentPage > 1) {
-							loadCatList(data.currentPage - 1);
-						}
+					$('#prevPage').off('click').click(function () {
+					    if (data.currentPage > 1) {
+					        loadCatList(data.currentPage - 1); // 跳转到上一页
+					    }
 					});
 
-					$('#nextPage').click(function() {
-						if (data.currentPage < totalPages) {
-							loadCatList(data.currentPage + 1);
-						}
+					$('#nextPage').off('click').click(function () {
+					    if (data.currentPage < totalPages) {
+					        loadCatList(data.currentPage + 1); // 跳转到下一页
+					    }
 					});
 
 					// 編集ボタンのクリックイベント
