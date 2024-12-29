@@ -1,4 +1,4 @@
-/* 添加猫咪按钮样式 */
+/* 猫の追加ボタンのスタイル */
 .add-button {
 	text-align: left;
 	margin-bottom: 15px;
@@ -19,13 +19,14 @@
 	background-color: #2c3e50;
 }
 
-/* 查询区域样式 */
+/* 検索エリアのスタイル */
 .search-section {
 	margin-bottom: 15px;
 }
 
 .search-section form {
 	display: flex;
+	flex-wrap: wrap; /* 小さいスクリーンでは自動で折り返し */
 	gap: 12px;
 	align-items: center;
 }
@@ -36,8 +37,19 @@
 	border: 1px solid #ccc;
 	border-radius: 8px;
 	font-size: 0.9rem;
+	width: calc(100% - 120px); /* 入力フォームの幅を調整（ボタンの幅を引く） */
+	min-width: 200px; /* 最小幅を設定 */
 }
 
+/* 修正：大きな画面で検索フォームの幅を適切に設定 */
+@media ( min-width : 768px) {
+	.search-section input[type="text"], .search-section input[type="number"]
+		{
+		width: 300px; /* 幅を300pxに固定 */
+	}
+}
+
+/* 検索ボタンのスタイル */
 .search-section button {
 	padding: 8px 16px;
 	background-color: #34495e;
@@ -45,15 +57,19 @@
 	border: none;
 	border-radius: 8px;
 	font-size: 0.9rem;
+	cursor: pointer;
+	min-width: 100px; /* ボタンの最小幅 */
 }
 
 .search-section button:hover {
 	background-color: #2c3e50;
 }
 
-/* 猫咪信息列表 */
+/* 猫の情報リスト */
 .cat-list {
 	margin-top: 40px;
+	width: 100%; /* 表の幅を自動調整 */
+	overflow-x: auto; /* 表が横スクロール可能 */
 }
 
 .cat-list table {
@@ -64,6 +80,8 @@
 .cat-list table th, .cat-list table td {
 	padding: 12px;
 	text-align: center;
+	word-wrap: break-word; /* 長いテキストを改行 */
+	white-space: normal; /* テキストが溢れないように */
 }
 
 .cat-list table th {
@@ -88,7 +106,7 @@
 	background-color: #2c3e50;
 }
 
-/* 分页 */
+/* ページネーション */
 #pagination {
 	margin-top: 20px;
 	text-align: center;
@@ -107,7 +125,7 @@
 	background-color: #1abc9c;
 }
 
-/* 模态框的样式 */
+/* モーダルウィンドウのスタイル */
 .modal {
 	position: fixed;
 	top: 50%;
@@ -115,7 +133,7 @@
 	transform: translate(-50%, -50%);
 	background-color: #ffffff;
 	display: none;
-	width: 60%;
+	width: 80%; /* 幅を自動調整 */
 	max-width: 600px;
 	padding: 20px;
 	border-radius: 10px;
@@ -146,7 +164,7 @@
 	text-align: right;
 }
 
-/* 添加猫咪模态框样式 */
+/* 猫の追加モーダルウィンドウのスタイル */
 #addCatModal .modal-content, #editCatModal .modal-content {
 	font-size: 1rem;
 }
@@ -174,7 +192,7 @@
 	background-color: #2c3e50;
 }
 
-/* 关闭按钮样式 */
+/* 閉じるボタンのスタイル */
 .close {
 	font-size: 1.5rem;
 	cursor: pointer;
@@ -183,7 +201,7 @@
 	right: 10px;
 }
 
-/* 关闭按钮样式（添加猫咪模态框） */
+/* 猫の追加モーダルの閉じるボタン */
 #closeAddCatModal, #closeEditCatModal {
 	font-size: 1.5rem;
 	cursor: pointer;
@@ -192,7 +210,7 @@
 	right: 10px;
 }
 
-/* 详情模态框样式 */
+/* 猫情報の詳細モーダルのスタイル */
 #catInfoModal .modal-content {
 	padding: 20px;
 	color: #333333;
@@ -223,7 +241,7 @@
 	background-color: #2c3e50;
 }
 
-/* 弹窗区域（猫咪详情） */
+/* 猫情報の詳細モーダルエリア */
 #catInfoModal {
 	position: fixed;
 	top: 50%;
@@ -231,7 +249,7 @@
 	transform: translate(-50%, -50%);
 	background-color: #ffffff;
 	display: none;
-	width: 60%;
+	width: 80%; /* 幅を自動調整 */
 	max-width: 600px;
 	padding: 20px;
 	border-radius: 10px;
@@ -239,16 +257,18 @@
 	z-index: 1000;
 }
 
-/* 响应式设计 */
+/* レスポンシブデザイン */
 @media ( max-width : 768px) {
 	.modal {
-		width: 80%;
+		width: 90%; /* 小さいスクリーンでは幅を90%に設定 */
 	}
 	.add-button button, .search-section button, .cat-list table td button {
 		font-size: 0.85rem;
+		padding: 6px 12px;
 	}
 	.cat-list table th, .cat-list table td {
 		padding: 10px;
+		font-size: 0.9rem; /* 小さいスクリーンに適したフォントサイズ */
 	}
 	.search-section form {
 		flex-direction: column;
@@ -257,5 +277,23 @@
 	.search-section input[type="text"], .search-section input[type="number"]
 		{
 		width: 100%;
+	}
+}
+
+@media ( max-width : 480px) {
+	.modal {
+		width: 95%; /* 更に小さいスクリーンでは幅を95%に設定 */
+	}
+	.add-button button, .search-section button, .cat-list table td button {
+		font-size: 0.75rem;
+		padding: 5px 10px;
+	}
+	.cat-list table th, .cat-list table td {
+		padding: 8px;
+		font-size: 0.85rem;
+	}
+	.search-section input[type="text"], .search-section input[type="number"]
+		{
+		font-size: 0.8rem;
 	}
 }

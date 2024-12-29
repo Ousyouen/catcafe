@@ -1,5 +1,5 @@
 /* admin */
-@charset "UTF-8";/* Reset some default styles */
+@charset "UTF-8"; /* 一部デフォルトスタイルのリセット */
 * {
     margin: 0;
     padding: 0;
@@ -12,10 +12,10 @@ body {
     color: #333;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures the body takes at least full height */
+    min-height: 100vh; /* ボディが最低でも画面全体の高さを取る */
 }
 
-/* Header Style */
+/* ヘッダースタイル */
 header {
     background-color: #2c3e50;
     color: white;
@@ -27,7 +27,7 @@ header h1 {
     font-size: 24px;
 }
 
-/* Navigation Style */
+/* ナビゲーションスタイル */
 nav ul {
     list-style: none;
     display: flex;
@@ -52,19 +52,21 @@ nav ul li a:hover {
     color: #1abc9c;
 }
 
-/* Main Container */
+/* メインコンテナ */
 .container {
     display: flex;
     margin: 20px;
-    flex-grow: 1; /* This will make the content area take up remaining space */
+    flex-grow: 1; /* コンテンツエリアが残りのスペースを占める */
+    flex-wrap: wrap; /* 子要素が改行されるように */
 }
 
-/* Sidebar */
+/* サイドバー */
 .sidebar {
     width: 250px;
     background-color: #2c3e50;
     color: white;
     padding-top: 20px;
+    margin-right: 20px; /* 右側のスペース */
 }
 
 .sidebar ul {
@@ -88,13 +90,14 @@ nav ul li a:hover {
     background-color: #34495e;
 }
 
-/* Content Area */
+/* コンテンツエリア */
 .content {
     flex: 1;
     padding: 20px;
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    min-width: 0; /* 内容区域的最小宽度限制 */
 }
 
 .content h2 {
@@ -116,7 +119,7 @@ nav ul li a:hover {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer */
+/* フッタースタイル */
 footer {
     background-color: #34495e;
     color: white;
@@ -124,5 +127,58 @@ footer {
     text-align: center;
     position: fixed;
     bottom: 0;
-    width: 100%; /* Ensures footer takes full width */
+    width: 100%; /* フッターが画面幅いっぱいに広がる */
+}
+
+/* モバイルとタブレット向けのレスポンシブデザイン */
+
+/* 画面幅が768px以下（タブレットや小さいデバイス向け） */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; /* サイドバーとコンテンツを縦に並べる */
+    }
+
+    .sidebar {
+        width: 100%; /* サイドバーがフル幅を占める */
+        margin-right: 0; /* 右の余白をなくす */
+        padding-top: 10px;
+    }
+
+    .content {
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+}
+
+/* 画面幅が480px以下（モバイルフォン向け） */
+@media screen and (max-width: 480px) {
+    header h1 {
+        font-size: 18px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .content {
+        padding: 10px;
+    }
 }
