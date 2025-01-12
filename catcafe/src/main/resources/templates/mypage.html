@@ -10,91 +10,43 @@
     <script src="/js/save.js"></script>
 </head>
 <body>
-    <!-- Navigation Script -->
-    <script>
-        $(document).ready(function() {
-            $("span.menu").on("click", function() {
-                $(".top-menu").slideToggle("slow");
-            });
-        });
-    </script>
-    <script src="/js/jquery.swipebox.min.js" defer></script>
-
     <!-- Header Section -->
-    <div id="home" class="header">
-        <div class="header-bottom">
-            <div class="container">
-                <div class="logo">
-                    <a href="index.html">
-                        <h1>Gat<span>o</span></h1>
-                    </a>
-                </div>
-                <span class="menu"></span>
-                <div class="top-menu"> 
-                    <ul>
-                        <nav>
-                            <li><a href="index.html">Home</a></li> 
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="services.html">Services</a></li> 
-                            <li><a href="cats">猫たち</a></li>
-                            <li><a class="active" href="user.html">マイページ</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </nav>
-                    </ul>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
+    <div th:replace="header.html :: *"></div>
 
-    <!-- Banner Section -->
-    <div class="banner two">
-        <div class="container">    
-            <div class="pag-nav">
-                <ul class="p-list">
-                    <li><a href="index.html">Home</a></li> &nbsp;&nbsp;/&nbsp;
-                    <li class="act">&nbsp;マイページ</li>
-                </ul>
-            </div>
-        </div>   
-    </div>
-
-        <!-- User Profile Section -->
+    <!-- User Profile Section -->
     <div class="container">
-        <!-- 添加 null 检查 -->
         <div th:if="${user == null}">
             <h2 class="text-center text-danger mt-5">ユーザー情報が見つかりません。</h2>
             <p class="text-center">指定されたユーザーIDに対応するデータが存在しません。</p>
         </div>
         <input type="hidden" id="userId" class="form-control" th:value="${user.id}">
-            <div class="row align-items-center">
-                <div class="col-md-3 text-center">
-                    <label for="avatarUpload">
-                        <img th:src="@{/images/user_avatar.jpg}" alt="User Avatar" class="img-responsive img-circle" style="max-width: 150px; margin: auto; cursor: pointer;" id="avatarPreview" />
-                    </label>
-                    <p class="mt-2" style="font-size: 0.9em; color: #666;">アイコンをクリックして更新</p>
-                    <input type="file" name="avatar" id="avatarUpload" accept="image/*" style="display: none;">
+        <div class="row align-items-center">
+            <div class="col-md-3 text-center">
+                <label for="avatarUpload">
+                    <img th:src="@{/images/user_avatar.jpg}" alt="User Avatar" class="img-responsive img-circle" style="max-width: 150px; margin: auto; cursor: pointer;" id="avatarPreview" />
+                </label>
+                <p class="mt-2" style="font-size: 0.9em; color: #666;">アイコンをクリックして更新</p>
+                <input type="file" name="avatar" id="avatarUpload" accept="image/*" style="display: none;">
+            </div>
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label for="username">ユーザー名:</label>
+                    <input type="text" name="username" id="username" class="form-control" th:value="${user.username}">
                 </div>
-                <div class="col-md-9">
-                    <div class="form-group">
-                        <label for="username">ユーザー名:</label>
-                        <input type="text" name="username" id="username" class="form-control" th:value="${user.username}">
-                    </div>
-                    <div class="form-group">
-                        <label for="birthday">生年月日:</label>
-                        <input type="date" name="birthday" id="birthday" class="form-control" th:value="${#dates.format(user.birthday, 'yyyy-MM-dd')}">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">メールアドレス:</label>
-                        <input type="email" name="email" id="email" class="form-control" th:value="${user.email}">
-                    </div>
-                    <div class="form-group">
-                        <button type="button" id="saveButton" class="btn btn-primary">保存</button>
-                    </div>
+                <div class="form-group">
+                    <label for="birthday">生年月日:</label>
+                    <input type="date" name="birthday" id="birthday" class="form-control" th:value="${#dates.format(user.birthday, 'yyyy-MM-dd')}">
+                </div>
+                <div class="form-group">
+                    <label for="email">メールアドレス:</label>
+                    <input type="email" name="email" id="email" class="form-control" th:value="${user.email}">
+                </div>
+                <div class="form-group">
+                    <button type="button" id="saveButton" class="btn btn-primary">保存</button>
                 </div>
             </div>
+        </div>
     </div>
-
 
     <!-- Gallery Section -->
     <div class="gallery services py-5">
@@ -103,102 +55,19 @@
             <div class="row">
                 <div class="col-md-3 mb-4">
                     <a href="/images/g1.jpg" class="swipebox">
-                        <img src="/images/g1.jpg" class="img-responsive zoom-img" style="border-radius: 10px;"/>
+                        <img src="/images/g1.jpg" class="img-responsive zoom-img" style="border-radius: 10px;" />
                     </a>
                 </div>
                 <div class="col-md-3 mb-4">
                     <a href="/images/g2.jpg" class="swipebox">
-                        <img src="/images/g2.jpg" class="img-responsive zoom-img" style="border-radius: 10px;"/>
+                        <img src="/images/g2.jpg" class="img-responsive zoom-img" style="border-radius: 10px;" />
                     </a>
                 </div>
-            </div>
-        </div>
-    </div>
-     <!-- Reservation Section -->
-    <div class="reservation py-5">
-        <div class="container">
-            <h3 class="text-center mb-4">予約履歴</h3>
-            <table class="table table-bordered text-center">
-                <thead class="thead-light">
-                    <tr>
-                        <th>日付</th>
-                        <th>時間</th>
-                        <th>予約ステータス</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>2024/07/10</td>
-                        <td>14:00 - 16:00</td>
-                        <td>確定</td>
-                    </tr>
-                    <tr>
-                        <td>2024/07/15</td>
-                        <td>12:00 - 14:00</td>
-                        <td>キャンセル</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Family Section -->
-    <div class="c-family">
-        <div class="container">
-            <div class="family-top">
-                <h3>家族の一員としての猫 !!</h3>
-                <p>私たちの猫の大家族は、愛らしい猫たちがたくさん集まった楽しい場所です。各々の猫は独自の性格を持ち、時にはお互いにいたずらをしたり、静かに寄り添ったりしています。猫たちの多様性が魅力で、どの猫も家族の一員として大切にされています。この家族の一員として、毎日が新しい発見と喜びに満ちています。猫たちと一緒に過ごす時間は、心温まるひとときです。</p>
-                <a class="read two" href="#">もっと見る</a>
             </div>
         </div>
     </div>
 
     <!-- Footer Section -->
-    <div class="footer text-center">
-        <div class="container">
-            <div class="footer-grids">
-                <div class="col-md-6 footer-text">
-                    <h3>私たちについて</h3>
-                    <p>私たちの猫カフェは、愛らしい猫たちと過ごしながらリラックスできる場所です。猫好きの皆様にとって、心地よい空間を提供し、日々の疲れを癒すことを目的としています。おいしいドリンクと共に、猫たちとふれあい、癒されるひとときをお楽しみください。</p>
-                    <p>私たちのカフェでは、猫たちが自由に歩き回り、ゆったりとした環境でお客様をお迎えします。猫と過ごす時間は、あなたの心と体をリフレッシュする特別な瞬間です。</p>
-                    <a class="read" href="single.html">詳細はこちら</a>
-                </div>
-                <div class="col-md-6 footer-info">
-                    <h3>お問い合わせ</h3>
-                    <p>猫カフェについての質問や予約に関するお問い合わせは、お気軽にご連絡ください。私たちのカフェは、お客様に最良の体験を提供することをお約束します。</p>
-                    <div class="support">
-                        <input type="text" class="text" value="メールアドレスを入力..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'メールアドレスを入力...';}">
-                        <input type="submit" value="購読する" class="botton">
-                    </div>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="copy">
-        <p>&copy; 2024 すべての権利を保有。 <a target="_blank" href="http://www.mobanwang.com/" title="ウェブテンプレート">ウェブテンプレート</a></p>
-    </div>
-
-    <!-- スムーズスクロール -->
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event){
-                event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-            });
-        });
-    </script>
-
-    <!-- 上に戻るボタン -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $().UItoTop({ easingType: 'easeOutQuart' });
-        });
-    </script>
-
-    <a href="#home" id="toTop" class="scroll" style="display: block;">
-        <span id="toTopHover" style="opacity: 1;"> </span>
-    </a>
+    <div th:replace="footer.html :: *"></div>
 </body>
 </html>
