@@ -50,10 +50,10 @@ $(document).ready(function() {
 
                     // 更新分页信息
                     const totalPages = data.totalPages;
-                    $('#currentPage').text(1);  // 当前页重置为1
-                    $('#totalPages').text(totalPages);  // 总页数
-                    $('#prevPage').prop('disabled', true);  // 上一页按钮禁用
-                    $('#nextPage').prop('disabled', totalPages <= 1);  // 下一页按钮禁用
+                    $('#currentPage').text(data.currentPage);  // 更新当前页
+                    $('#totalPages').text(totalPages);  // 更新总页数
+                    $('#prevPage').prop('disabled', data.currentPage === 1);  // 上一页按钮禁用
+                    $('#nextPage').prop('disabled', data.currentPage === totalPages);  // 下一页按钮禁用
 
                     // 设置点击“上一页”和“下一页”的事件
                     $('#prevPage').off('click').click(function() {
@@ -237,7 +237,7 @@ $(document).ready(function() {
             .then(data => {
                 alert(data.message);
                 if (data.message === '猫の情報が追加されました') {
-                    $('#addCatModal').fadeOut(300);
+                    $('#addCatModal').fadeOut(300	);
                     loadCatList(1);
                 }
             })
